@@ -1,0 +1,181 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block content %}
+ <!--======= SUB BANNER =========-->
+<section class="sub-bnr" data-stellar-background-ratio="0.5">
+  <div class="position-center-center">
+    <div class="container">
+      <h4>ECOSHOP PRODUCTS</h4>
+      <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula. 
+        Sed feugiat, tellus vel tristique posuere, diam</p> -->
+      <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li class="active">Look</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- Content -->
+<div id="content"> 
+<!-- Products -->
+  <section class="shop-page padding-top-100 padding-bottom-100">
+    <div class="container">
+      <div class="row"> 
+        
+        <!-- Item Content -->
+        <div class="col-sm-9">
+          <div class="item-display">
+            <div class="row"> 
+              <!-- Products Select -->
+              <div class="col-xs-6">
+                <div class="pull-left"> 
+                  
+                  <!-- Short By -->
+                  <select class="selectpicker">
+                    <option>Short By</option>
+                    <option>Short By</option>
+                    <option>Short By</option>
+                  </select>
+                  <!-- Filter By 
+                  <select class="selectpicker">
+                    <option>Filter By</option>
+                    <option>Short By</option>
+                    <option>Short By</option>
+                  </select> -->
+                  
+                  <!-- GRID & LIST --> 
+                  <a href="#." class="grid-style"><i class="icon-grid"></i></a> <a href="#." class="list-style"><i class="icon-list"></i></a> </div>
+              </div>
+              <div class="col-xs-6 text-right"> <span class="product-num">Showing 1 - {{ProductInpage}} of total <b>{{productCount}}</b> products</span> </div>
+            </div>
+          </div>
+          
+          <!-- Popular Item Slide -->
+      <div class="papular-block row"> 
+            <!-- Item -->
+            {% for product in products %}
+            <div class="col-md-4">
+              <div class="item"> 
+                  <!-- Sale Tags -->
+                  <!-- <div class="on-sale"> 10% <span>OFF</span> </div> -->
+                  <!-- Item img -->
+                      <div class="item-img"> <img class="img-1" src="#" alt="" > <img class="img-2" src="#" alt="" > 
+                          <!-- Overlay -->
+                          <div class="overlay">
+                              <div class="position-center-center">
+                                  <div class="inn"><a href="#" data-lighter><i class="icon-magnifier"></i></a> <a href="#."><i class="icon-basket"></i></a> <a href="#." ><i class="icon-heart"></i></a></div>
+                              </div>
+                          </div>
+                        </div> 
+                        
+                  <!-- Item Name -->
+                  <div class="item-name"> <a href="{{product.productGet_url}}">{{product.name}}</a>
+                      <!-- <p>{{product.description}}</p> -->
+                  </div>
+                  <!-- Price --> 
+                  <span class="price"><small></small>{{product.bdt_price}}</span> 
+              </div>
+          </div>
+          {% endfor %}
+            <!-- Item -->
+
+      </div>
+          
+          <!-- Pagination -->
+          {% if products.has_other_pages %}
+          <ul class="pagination in-center">
+            {% if products.has_previous %}
+            <li class="page-item"><a href="?page={{products.previous_page_number}}"><i class="fa fa-angle-left"></i></a></li>
+            {% else %}
+            <li class="page-item disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
+            {% endif %}
+            {% for i in products.paginator.page_range %}
+              {% if products.number == i %}
+            <li class="page-item active"><a href="#">{{i}}</a></li>
+              {% else %}
+              <li class="page-item"><a href="?page={{i}}">{{i}}</a></li>
+              {% endif %}
+            {% endfor %}
+            {% if products.has_next %}
+            <li class="page-item"><a href="?page={{products.next_page_number}}"><i class="fa fa-angle-right"></i></a></li>
+              {% else %}
+            <li class="page-item disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
+            {% endif %}
+          </ul>
+          {% endif %}
+        </div>
+        
+        <!-- Shop SideBar -->
+        <div class="col-sm-3">
+          <div class="shop-sidebar"> 
+            
+            <!-- Category -->
+            <h5 class="shop-tittle margin-bottom-30">category</h5>
+            {% for category in cateAll %}
+            <ul class="shop-cate"> 
+              <li><a href="{{category.get_url}}"> {{category.category_name}} <span>{{category.stock_qnty}}</span></a></li>
+            </ul>
+            {% endfor %}
+            <!-- FILTER BY PRICE -->
+            <h5 class="shop-tittle margin-top-60 margin-bottom-30">FILTER BY PRICE</h5>
+            
+            <!-- TAGS -->
+            <h5 class="shop-tittle margin-top-60 margin-bottom-30">FILTER BY COLORS</h5>
+            <ul class="colors">
+              <li><a href="#." style="background:#958170;"></a></li>
+              <li><a href="#." style="background:#c9a688;"></a></li>
+              <li><a href="#." style="background:#c9c288;"></a></li>
+              <li><a href="#." style="background:#a7c988;"></a></li>
+              <li><a href="#." style="background:#9ed66b;"></a></li>
+              <li><a href="#." style="background:#6bd6b1;"></a></li>
+              <li><a href="#." style="background:#82c2dc;"></a></li>
+              <li><a href="#." style="background:#8295dc;"></a></li>
+              <li><a href="#." style="background:#9b82dc;"></a></li>
+              <li><a href="#." style="background:#dc82d9;"></a></li>
+              <li><a href="#." style="background:#dc82a2;"></a></li>
+              <li><a href="#." style="background:#e04756;"></a></li>
+              <li><a href="#." style="background:#f56868;"></a></li>
+              <li><a href="#." style="background:#eda339;"></a></li>
+              <li><a href="#." style="background:#edd639;"></a></li>
+              <li><a href="#." style="background:#daed39;"></a></li>
+              <li><a href="#." style="background:#a3ed39;"></a></li>
+              <li><a href="#." style="background:#f56868;"></a></li>
+            </ul>
+            
+            <!-- TAGS -->
+            <h5 class="shop-tittle margin-top-60 margin-bottom-30">PAUPLAR TAGS</h5>
+            
+            <ul class="shop-tags">
+              {% for pupolarProduct in pupolarProducts %}
+              <li><a href="#.">{{pupolarProduct.name}}</a></li>
+              {% endfor %}
+            </ul>
+            <!-- BRAND -->
+            <h5 class="shop-tittle margin-top-60 margin-bottom-30">brands</h5>
+            <ul class="shop-cate">
+              <!-- <li><a href="#."> G-Furniture
+                BigYellow</a></li>
+              <li><a href="#."> WoodenBazaar</a></li>
+              <li><a href="#."> GreenWoods</a></li>
+              <li><a href="#."> Hot-n-Fire </a></li> -->
+            </ul>
+            
+            <!-- SIDE BACR BANER -->
+            {% for photo in sidephoto  %}
+            <div class="side-bnr margin-top-50"> <img class="img-responsive" src="{{photo.image.url}}" alt="">
+              <div class="position-center-center"> <span class="price"><small></small>{{photo.bdt_price}}</span>
+                <div class="bnr-text">look
+                  hot
+                  with
+                  style</div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

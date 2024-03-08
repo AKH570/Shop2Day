@@ -1,0 +1,69 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords"
+        content="ShopUS, bootstrap-5, bootstrap, sass, css, HTML Template, HTML,html, bootstrap template, free template, figma, web design, web development,front end, bootstrap datepicker, bootstrap timepicker, javascript, ecommerce template">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" href="{% static 'assets/images/homepage-one/icon.png' %}">
+
+    <!--title  -->
+    <title>ShopIn: Your One-Stop Destination for Fashion and Style</title>
+
+
+    <!--------------- swiper-css ---------------->
+    <link rel="stylesheet" href="{% static 'css/swiper10-bundle.min.css' %}">
+
+    <!--------------- bootstrap-css ---------------->
+    <link rel="stylesheet" href="{% static 'css/bootstrap-5.3.2.min.css' %}">
+
+    <!---------------------- Range Slider ------------------->
+    <link rel="stylesheet" href="{% static 'css/nouislider.min.css' %}">
+
+    <!---------------------- Scroll ------------------->
+    <link rel="stylesheet" href="{% static 'css/aos-3.0.0.css' %}">
+
+    <!--------------- additional-css ---------------->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!--------------- font-awesome ---------------->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+  <!-- header -->
+  {% include 'common/navbar.html' %}
+  <!-- header -->
+ <!--------------- hero-section --------------->
+<!--------------- hero-section-end --------------->
+    
+    <!-- SLIDE Start -->
+    {% block content %}
+    <!-- content -->
+    {% endblock %}
+    <!-- footer -->
+    {% include 'common/footer.html' %}
+  <!--------------- jQuery ---------------->
+  <script src="{% static 'assets/js/jquery_3.7.1.min.js' %}"></script>
+
+  <!--------------- bootstrap-js ---------------->
+  <script src="{% static 'assets/js/bootstrap_5.3.2.bundle.min.js' %}"></script>
+
+  <!--------------- Range-Slider-js ---------------->
+  <script src="{% static 'assets/js/nouislider.min.js' %}"></script>
+
+  <!--------------- scroll-Animation-js ---------------->
+  <script src="{% static 'assets/js/aos-3.0.0.js' %}"></script>
+
+  <!--------------- swiper-js ---------------->
+  <script src="{% static 'assets/js/swiper10-bundle.min.js' %}"></script>
+
+  <!--------------- additional-js ---------------->
+  <script src="{% static 'assets/js/shopus.js' %}"></script>
+  <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+page: product->
+    pagination
+    filter by category
+    side banner
