@@ -67,7 +67,7 @@
     <!--------------- style-section-end --------------->
 
     <!--------------- category-section--------------->
-    <!-- <section class="product-category">
+    <section class="product-category">
         <div class="container">
             <div class="section-title">
                 <h5>Our Categories</h5>
@@ -172,7 +172,7 @@
                 </div>
             </div>
         </div>
-    </section> -->
+    </section>
     <!--------------- category-section-end--------------->
 
     <!--------------- brand-section--------------->
@@ -205,7 +205,8 @@
     <section class="product arrival">
         <div class="container">
             <div class="section-title">
-                <h5>Popular Items</h5>
+                <h5>New Items</h5> 
+                <!-- category is popular-item -->
                 <a href="#" class="view">View All</a>
             </div>
             <div class="arrival-section">
@@ -249,7 +250,7 @@
                                             </svg>
                                         </span>
                                     </a>
-                                    <a href="wishlist.html" class="favourite cart-item">
+                                    <!-- <a href="wishlist.html" class="favourite cart-item">
                                         <span>
                                             <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -280,7 +281,7 @@
                                                     fill="black" fill-opacity="0.2" />
                                             </svg>
                                         </span>
-                                    </a>
+                                    </a> -->
                                 </div>
                             </div>
                             <div class="product-info">
@@ -310,11 +311,13 @@
                                     <a href="{{new.product.productGet_url}}" class="product-details">{{new.product.name}}
                                     </a>
                                     <div class="price">
+                                        
                                         {% for p in new.product.price_set.all %}
                                         <!-- <span class="price-cut">$12.99</span> -->
-                                        <span class="new-price">{{p.BDT}}</span>{% endfor %}
+                                        <span class="new-price">{{p.BDT}}</span>
+                                        {% endfor %}
                                         {% for s in new.product.stocks_set.all %}
-                                        <span class="new-price">{{s.quantity}}{{s.unit}}</span>
+                                        <span class="new-price">{{s.unit}}</span>
                                         {% endfor %}
                                     </div>
                                 </div>
@@ -358,7 +361,7 @@
             </div>
             <div class="flash-sale-section">
                 <div class="row g-5">
-                    {% for flash in flashprodImg %}
+                    {% for flash in flashProdImg %}
                     <div class="col-lg-3 col-md-6">
                         <div class="product-wrapper" data-aos="fade-right" data-aos-duration="100">
                             <div class="product-img">
@@ -397,7 +400,7 @@
                                             </svg>
                                         </span>
                                     </a>
-                                    <a href="wishlist.html" class="favourite cart-item">
+                                    <!-- <a href="wishlist.html" class="favourite cart-item">
                                         <span>
                                             <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -408,8 +411,8 @@
                                             </svg>
 
                                         </span>
-                                    </a>
-                                    <a href="compaire.html" class="compaire cart-item">
+                                    </a> -->
+                                    <!-- <a href="compaire.html" class="compaire cart-item">
                                         <span>
                                             <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -428,7 +431,7 @@
                                                     fill="black" fill-opacity="0.2" />
                                             </svg>
                                         </span>
-                                    </a>
+                                    </a> -->
                                 </div>
                             </div>
                             <div class="product-info">
@@ -458,9 +461,9 @@
                                     <a href="{{flash.product.productGet_url}}" class="product-details">{{flash.product.name}}
                                     </a>
                                     <div class="price">
-                                        {% for p in flash.product.price_set.all %}
+                                        {% for price in flash.product.price_set.all %}
                                         <!-- <span class="price-cut">$22.99</span> -->
-                                        <span class="new-price">{{p.BDT}}</span>
+                                        <span class="new-price">{{price.BDT}}</span>
                                         {% endfor %}
                                     </div>
                                 </div>
@@ -1147,7 +1150,7 @@
     <!--------------- top-sell-section-end--------------->
 
     <!--------------- best-sell-section--------------->
-    <!-- <section class="product best-seller">
+    <section class="product best-seller">
         <div class="container">
             <div class="best-selling-section">
                 <div class="section-title">
@@ -1260,7 +1263,7 @@
                 </div>
             </div>
         </div>
-    </section> -->
+    </section>
     <!--------------- best-sell-section-end--------------->
 
     <!--------------- weekly-section--------------->
