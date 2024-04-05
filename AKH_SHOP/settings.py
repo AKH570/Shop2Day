@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'Store',
     'Review',
     'Cart',
+    'Accounts',
 ]
 
 MIDDLEWARE = [
@@ -90,6 +91,7 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = "Accounts.User"
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

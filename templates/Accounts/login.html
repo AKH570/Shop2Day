@@ -1,0 +1,51 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block content %}
+<!--------------- login-section --------------->
+<section class="login footer-padding">
+    <div class="container">
+        <div class="login-section">
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <div class="review-form">
+                    
+                    <h5 class="comment-title">Login Here</h5>
+                    
+                    <div class="review-inner-form ">
+                        <div class="review-form-name">
+                            <label for="email" class="form-label">Email Address**</label>
+                            <input type="email" name="email" class="form-control" placeholder="Email">
+                        </div>
+                        <div class="review-form-name">
+                            <label for="password" class="form-label">Password*</label>
+                            <input type="password" name="password" class="form-control" placeholder="password">
+                        </div>
+                        <div class="review-form-name checkbox">
+                            <div class="checkbox-item">
+                                <input type="checkbox">
+                                <span class="address">
+                                    Remember Me</span>
+                            </div>
+                            <div class="forget-pass">
+                                <p>Forgot password?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="login-btn text-center">
+                        <!-- <a href="#" class="shop-btn">Log In</a> -->
+                        
+                        <input type="submit" class="shop-btn" value="Log In">
+                        <span class="shop-account">Dont't have an account ?<a href="{% url 'registrationform' %}">Sign Up
+                            </a></span>
+                    </div>
+                </div>
+            </form>
+            <div class="login-btn text-center">
+                {% include 'common/alert.html' %}
+            </div>
+        </div>
+    </div>
+</section>
+<!--------------- login-section-end --------------->
+{% endblock content %}

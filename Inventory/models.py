@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
+from Accounts.models import User
 from Category.models import CATEGORY
 from django.urls import reverse
 #from colorfield.fields import ColorField

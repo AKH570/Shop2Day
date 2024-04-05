@@ -24,7 +24,7 @@ from django.http import HttpRequest,HttpResponse
 #     return render(request,'Store/store.html',context)
 
 #In Product Menu the first slug-Summer Stor
-
+"""
 def categoryOne(request,category_slug=None,subcate_slug=None):
     products = None
     categories = None
@@ -99,3 +99,4 @@ def productDetails(request,cate_slug,prod_slug):
                 }
         return render(request,'Inventory/productDetail.html',context)
 
+"""

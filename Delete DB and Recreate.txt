@@ -1,0 +1,13 @@
+How do I delete DB (sqlite3) in Django 1.9 to start from scratch?
+
+1.Delete the sqlite database file (often db.sqlite3) in your django project folder (or wherever you placed it)
+2.Delete everything (delete all ".py" and ".pyc" files manually) except __init__.py file from migration folder in all django apps (eg: rm */migrations/0*.py)
+3.Make changes in your models (models.py).
+4.Run the command python manage.py makemigrations or python3 manage.py makemigrations
+5.Then run the command python manage.py migrate
+
+
+rm -f tmp.db db.sqlite3
+rm -r my-app/migrations
+python manage.py makemigrations
+python manage.py migrate

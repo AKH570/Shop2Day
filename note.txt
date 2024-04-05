@@ -24,3 +24,14 @@ https://dev.to/nick_langat/building-a-shopping-cart-using-django-rest-framework-
 https://django-shop.readthedocs.io/en/latest/reference/cart-checkout.html
 https://www.alibabacloud.com/blog/develop-a-cart-application-with-django_594697
 https://pypi.org/project/django-shopping-cart/
+
+
+
+Navber: func1
+<a href="{{subc.get_subcategory_url}}">
+
+Index:func2
+<a href="{{new.product.productGet_url}}" class="product-details">{{new.product.name}}2
+
+Index:func3
+<a href="{{flash.product.productGet_url}}" class="product-details">{{flash.product.name}}3

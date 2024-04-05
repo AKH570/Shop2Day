@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse
 from Inventory.models import PRODUCTS,STOCKS,PRICE,IMAGE
+from Cart.models import CART
 from django.db.models import Q
 
 # Create your views here.
@@ -18,16 +19,20 @@ def Cart(request):
     return render(request,'Cart/cart.html',context)
 
 def AddToProduct(request,product_id):
-    # data = {'message': 'Hello, World!'}
-    return HttpResponse('Testing')
-    # if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-    #     try:
-    #         product = PRODUCTS.objects.get(slug=product_slug)
-    #         print(f'product{product}')
-    #     except:
-    #         return JsonResponse({'status':'Failed','message':'Product Not found'})
-    # else:
-    #     return JsonResponse({'status':'Failed','message':'Invalid Reques'})
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        try:
+            producId = PRODUCTS.objects.get(id=product_id)
+            print(f'productid is:{producId}')
+            try:
+                checkCart = CART.objects.get(product__slug=producId)
+                checkCart.qty += 1
+                checkCart.save()
 
-#check product is already exist in cart     
-    #return HttpResponse('Testing')
+                return JsonResponse({'status':'Success','message':'Cart added'})
+            except:
+                pass
+        except:
+            return JsonResponse({'status':'Failed','message':'Product not found'})
+    else:
+        return JsonResponse({'status':'Failed','message':'Invalid request'})
+    
