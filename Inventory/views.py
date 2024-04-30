@@ -9,7 +9,7 @@ from Review.models import Reviews
 from Review.forms import ReviewForm
 from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 from django.db.models import Q
-from django.http import HttpRequest,HttpResponse,HttpResponseRedirect
+from django.http import HttpRequest,HttpResponse,HttpResponseRedirect,JsonResponse
 from django.contrib.auth.decorators import login_required
 from Cart.models import CART
 import json
@@ -124,8 +124,10 @@ def UserReviews(request,cate_slug,prod_slug):
         return render(request,'Inventory/productDetail.html',context)
 
 def AddProduct(request,cate_slug,prod_slug):
-    all_param = (cate_slug,prod_slug, )
-    return HttpResponse(json.dumps(all_param))
+    if request.user.is_authenticated:
+        return JsonResponse({'status':'Success','message':'Welcome to this page'})
+    else:
+        return JsonResponse({'status':'Failed','message':'Please login'})
     # if request.headers.get('x-requested-with') == 'XMLHttpRequest':
     #     try:
     #         producId = PRODUCTS.objects.get(id=product_id)
