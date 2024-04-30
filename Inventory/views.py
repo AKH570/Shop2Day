@@ -125,7 +125,22 @@ def UserReviews(request,cate_slug,prod_slug):
 
 def AddProduct(request,cate_slug,prod_slug):
     if request.user.is_authenticated:
-        return JsonResponse({'status':'Success','message':'Welcome to this page'})
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            try:
+                ChooseProduct = PRODUCTS.objects.get(category__slug=cate_slug,slug=prod_slug)
+                # check wether this product is already in cart
+                try:
+                    productIncart = CART.objects.get(user=request.user,product=ChooseProduct)
+                    productIncart.qty += 1
+                    productIncart.save()
+                    return JsonResponse({'status':'Success','message':'Product increased'})
+                except:
+                    productIncart = CART.objects.create(user=request.user,product=ChooseProduct,qty=1)
+                    return JsonResponse({'status':'Success','message':'Product added'})
+            except:
+                return JsonResponse({'status':'Failed','message':'This product is not exist'})
+        else:
+            return JsonResponse({'status':'Failed','message':'Invalid request'})
     else:
         return JsonResponse({'status':'Failed','message':'Please login'})
     # if request.headers.get('x-requested-with') == 'XMLHttpRequest':

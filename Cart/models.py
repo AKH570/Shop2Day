@@ -13,6 +13,6 @@ class CART(models.Model):
     updated_at  = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.user
+        return str(self.user)
     class Meta:
         verbose_name_plural='CARTS'
