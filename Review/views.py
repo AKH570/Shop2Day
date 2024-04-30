@@ -1,17 +1,7 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect,HttpResponse
+from django.urls import reverse
+from Inventory.models import PRODUCTS
+from Inventory.views import productDetails
 
 # Create your views here.
-
-def Reviews(request,id):
-        comment=request.POST['comment']
-        user=request.user
-        activeAuction = Auction_listing.objects.get(pk=id)
-
-        newComment = Comments(
-            author = user,
-            message = comment,
-            auctionName=activeAuction
-        )
-        newComment.save()
-
-        return HttpResponseRedirect(reverse(listingAuction,args=(id, )))

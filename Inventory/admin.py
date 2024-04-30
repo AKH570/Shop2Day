@@ -4,6 +4,8 @@ from . models import (PRODUCTS,ATTRIBUTES,BRAND,
                       SUBCATEGORY)
 from Category.models import CATEGORY
 # Register your models here.
+
+
 @admin.register(SUBCATEGORY)
 class SubcategoryAdmin(admin.ModelAdmin):
     list_display = ['id','name','slug','category','is_active']
@@ -11,6 +13,9 @@ class SubcategoryAdmin(admin.ModelAdmin):
     list_editable = ('is_active',)
     list_filter=('category',)
 
+@admin.register(ATTRIBUTEVALUE)
+class ATTRIBUTEVALUEADMIN(admin.ModelAdmin):
+    pass
 #Brand
 @admin.register(BRAND)
 class BrandAdmin(admin.ModelAdmin):
@@ -28,6 +33,7 @@ class ImageInline(admin.TabularInline):
     model = IMAGE
     extra = 1
 @admin.register(PRODUCTS)
+#admin.site.site_header = “Product Review Admin”
 class ProductAdmin(admin.ModelAdmin):
     inlines = [StockInline,ImageInline]
     list_display=['id','name','slug','barcode','category','subcategory',
@@ -39,7 +45,7 @@ class ProductAdmin(admin.ModelAdmin):
     exclude = ('attributevalue',)
     list_editable = ('in_stocks','is_active','is_discount',)
     ordering = ('id',)
-
+    
 class PriceInline(admin.TabularInline):
     model = PRICE
     extra = 1

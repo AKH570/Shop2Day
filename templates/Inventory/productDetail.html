@@ -1,6 +1,8 @@
 {% extends 'common/base.html' %}
 {% load static %}
+
 {% block content %}
+
 <!--======= SUB BANNER =========-->
  <!--------------- products-info-section--------------->
  <section class="product product-info">
@@ -50,7 +52,7 @@
                       <span class="wrapper-subtitle">{{viewproduct.category.description}}</span>
                       <h5>{{viewproduct.name}}
                       </h5>
-                      <div class="ratings">
+                      <!-- <div class="ratings">
                           <span>
                               <svg width="75" height="15" viewBox="0 0 75 15" fill="none"
                                   xmlns="http://www.w3.org/2000/svg">
@@ -72,23 +74,23 @@
                               </svg>
                           </span>
                           <span class="text">6 Reviews</span>
-                      </div>
+                      </div> -->
                       <div class="price">
-                          <span class="price-cut">$9.99</span>
+                          <!-- <span class="price-cut">$9.99</span> -->
                           <span class="new-price">{{price.BDT}}</span>
                       </div>
                       <p class="content-paragraph">
                           <span class="inner-text">{{viewproduct.description}}</span></p>
                       <hr>
                       <div class="product-availability">
-                          <span>Availabillity : </span>
+                          <span>Stocks : </span>
                           {% if stocks.quantity == 0 %}
                           <span class="inner-text">Out of stock</span>
                           {% else %}
-                          <span class="inner-text">{{stocks.quantity}} Products Available</span>
+                          <span class="inner-text">Available</span>
                           {% endif %}
                       </div>
-                      <div class="product-size">
+                      <!-- <div class="product-size">
                           <P class="size-title">Size</P>
                           <div class="size-section">
                               <span class="size-text">Select your size</span>
@@ -104,38 +106,30 @@
                               </div>
                           </div>
                           <ul class="size-option">
-                            {% for size in attributes %}
+                            
                               <li class="option">
                                   <span class="option-text">{{size.values}}</span>
-                                  <!-- <span class="option-measure">3”W x 3”D x 5”H</span> -->
+                                  <span class="option-measure">3”W x 3”D x 5”H</span>
                               </li>
-                              {% endfor %}
+                              
                           </ul>
-                      </div>
+                      </div> -->
                       <div class="product-quantity">
                           <div class="quantity-wrapper">
                               <div class="quantity">
-                                  <span class="minus">
+                                  <!-- <span class="minus">
                                       -
                                   </span>
                                   <span class="number">1</span>
                                   <span class="plus">
                                       +
-                                  </span>
-                              </div>
-                              <div class="wishlist">
-                                  <span>
-                                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                          xmlns="http://www.w3.org/2000/svg">
-                                          <path
-                                              d="M17 1C14.9 1 13.1 2.1 12 3.7C10.9 2.1 9.1 1 7 1C3.7 1 1 3.7 1 7C1 13 12 22 12 22C12 22 23 13 23 7C23 3.7 20.3 1 17 1Z"
-                                              stroke="#797979" stroke-width="2" stroke-miterlimit="10"
-                                              stroke-linecap="square" />
-                                      </svg>
-                                  </span>
-                              </div>
-                          </div>
-                          <a href="#" class="shop-btn">
+                                  </span> -->
+                                  <a href=""><i class="fas fa-minus-circle"></i></a>
+                                    <span class="number">1</span>
+                                    <a href="#" class="addprooduct" data-id="{{ viewproduct.slug }}" data-url="{% url 'add_prod' viewproduct.category.slug viewproduct.slug %}"><i class="fas fa-plus-circle"></i></a>
+                                </div>
+                            </div>
+                          <!-- <a href="#" class="shop-btn">
                               <span>
                                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
                                       xmlns="http://www.w3.org/2000/svg">
@@ -145,7 +139,13 @@
                                   </svg>
                               </span>
                               <span>Add to Cart</span>
-                          </a>
+                          </a> -->
+                          <a href="#" class="shop-btn">
+                            <span>
+                                <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M19.0264 20.9929C20.0722 21.0873 21.0036 20.2223 20.9994 19.1864V16.4767C21.0104 16.0337 20.8579 15.6021 20.5709 15.264C19.7615 14.3106 16.9855 13.7008 15.8851 13.935C15.0273 14.1176 14.4272 14.9788 13.8405 15.5644C12.6172 14.8702 11.5075 14.005 10.5426 13M8.41019 10.1448C8.9969 9.55929 9.85987 8.96036 10.0428 8.10428C10.2771 7.00777 9.66813 4.24949 8.72131 3.43684C8.38828 3.151 7.96247 2.99577 7.52325 3.00009H4.80811C3.77358 3.00106 2.91287 3.92895 3.00706 4.96919C3.00081 12.9038 8.48251 19.3497 15.9999 20.7226M14.5 6.5C15.2371 6.64382 15.9689 6.96892 16.5 7.5C17.031 8.03108 17.3561 8.76284 17.5 9.5M15 3C16.5315 3.17014 17.9096 3.91107 19 5C20.0903 6.08893 20.8279 7.46869 21 9" stroke="#001A72" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                            </span>
+                            <span>Call for order: +880 1912873379</span>
+                        </a>
                       </div>
                       <hr>
                       <div class="product-details">
@@ -155,7 +155,7 @@
                       </div>
                       <hr>
                       <div class="product-report">
-                          <a href="#" class="report" onclick="modalAction('.action')">
+                          <!-- <a href="#" class="report" onclick="modalAction('.action')">
                               <span>
                                   <svg width="15" height="16" viewBox="0 0 15 16" fill="none"
                                       xmlns="http://www.w3.org/2000/svg">
@@ -165,7 +165,7 @@
                                   </svg>
                               </span>
                               <span>Report This Item</span>
-                          </a>
+                          </a> -->
                           <!-- modal -->
                           <div class="modal-wrapper action">
                               <div onclick="modalAction('.action')" class="anywhere-away"></div>
@@ -245,114 +245,135 @@
 
 <!--------------- products-details-section--------------->
 <section class="product product-description">
-  <div class="container">
-      <div class="product-detail-section">
-          <nav>
-              <div class="nav nav-tabs nav-item" id="nav-tab" role="tablist">
-                  <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
+    <div class="container">
+        <div class="product-detail-section">
+            <nav>
+                <div class="nav nav-tabs nav-item" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
                       data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
                       aria-selected="true">Description</button>
-                  <button class="nav-link" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review"
+                    <button class="nav-link" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review"
                       type="button" role="tab" aria-controls="nav-review" aria-selected="false">Reviews</button>
-                  <button class="nav-link" id="nav-seller-tab" data-bs-toggle="tab" data-bs-target="#nav-seller"
-                      type="button" role="tab" aria-controls="nav-seller" aria-selected="false">Seller
-                      Info</button>
-
-              </div>
-          </nav>
-          <div class="tab-content tab-item" id="nav-tabContent">
+                </div>
+            </nav>
+            <div class="tab-content tab-item" id="nav-tabContent">
 
               <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
                   tabindex="0" data-aos="fade-up">
                   <div class="product-intro-section">
                       <h5 class="intro-heading">Introduction</h5>
                       <p class="product-details">
-                          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                          has been the industry's standard dummy text ever since the 1500s, when an unknown
-                          printer took a galley of type and scrambled it to make a type specimen book. It has
-                          survived not only five centuries but also the on leap into electronic typesetting,
-                          remaining essentially unchanged. It wasn’t popularised in the 1960s with the release of
-                          Letraset sheets containing Lorem Ipsum passages, andei more recently with desktop
-                          publishing software like Aldus PageMaker including versions of Lorem Ipsum to make a
-                          type specimen book.
+                          
                       </p>
                   </div>
                   <div class="product-feature">
-                      <h5 class="intro-heading">Features :</h5>
-                      <ul>
-                          <li>
-                              <p>slim body with metal cover</p>
-                          </li>
-                          <li>
-                              <p>latest Intel Core i5-1135G7 processor (4 cores / 8 threads)</p>
-                          </li>
-                          <li>
-                              <p>8GB DDR4 RAM and fast 512GB PCIe SSD</p>
-                          </li>
-                          <li>
-                              <p>NVIDIA GeForce MX350 2GB GDDR5 graphics card backlit keyboard, touchpad with
-                                  gesture support</p>
-                          </li>
-                      </ul>
+                    <h5 class="intro-heading">Size Details :</h5>
+                    <table style="box-sizing: border-box; border-spacing: 0px; border-collapse: collapse; color: #555555; font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; margin: 15px 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; width: 424px; height: 159px; background: #ffffff;" border="1" cellspacing="0" cellpadding="0">
+                        <tbody style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent;">
+                        <tr style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent;">
+                        <td style="box-sizing: border-box; padding: 5px; margin: 0px; border: 2px solid #000000; outline: 0px; font-size: 12px; vertical-align: middle; text-align: center; background: transparent; height: 20px; width: 44px;"><span style="box-sizing: border-box; color: #000000; font-size: 10pt; font-family: verdana, geneva, sans-serif;"><strong style="box-sizing: border-box; font-weight: bold; margin: 0px; padding: 0px; border: 0px none; outline: 0px; vertical-align: baseline; background: transparent;"><span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px none; outline: 0px none; vertical-align: baseline; background: transparent none repeat scroll 0% 0%;">Size Chart:</span></strong></span></td>
+                        <td style="box-sizing: border-box; padding: 5px; margin: 0px; border: 2px solid #000000; outline: 0px; font-size: 12px; vertical-align: middle; text-align: center; background: transparent; height: 20px; width: 44px;"><span style="font-size: 10pt; font-family: verdana, geneva, sans-serif;"><strong style="box-sizing: border-box; --tw-border-opacity: 1; --tw-shadow: 0 0 transparent; --tw-ring-inset: var(--tw-empty, ); --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgba(59,130,246,0.5); --tw-ring-offset-shadow: 0 0 transparent; --tw-ring-shadow: 0 0 transparent; margin: 0px; padding: 0px; font-weight: bolder; color: #000000; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; border: 0px solid rgba(229,231,235,var(--tw-border-opacity));">Chest</strong></span></td>
+                        <td style="box-sizing: border-box; padding: 5px; margin: 0px; border: 2px solid #000000; outline: 0px; font-size: 12px; vertical-align: middle; text-align: center; background: transparent; height: 20px; width: 40px;"><span style="color: #000000; font-size: 10pt; font-family: verdana, geneva, sans-serif;"><strong>Length</strong></span></td>
+                        <td style="box-sizing: border-box; padding: 5px; margin: 0px; border: 2px solid #000000; outline: 0px; font-size: 12px; vertical-align: middle; text-align: center; background: transparent; height: 20px; width: 40px;"><span style="color: #000000; font-size: 10pt; font-family: verdana, geneva, sans-serif;"><strong>Sleve</strong></span></td>
+                        </tr>
+                        {% for attr in attributes %}
+                        <tr style="height: 27px;">
+                        <td style="box-sizing: border-box; padding: 5px; margin: 0px; border: 2px solid #000000; outline: 0px; font-size: 12px; vertical-align: middle; text-align: center; background: transparent; width: 86px; height: 27px;"><span style="font-size: 10pt; font-family: verdana, geneva, sans-serif;"><strong><span style="color: #000000;">M {{attr.size }}</span></strong></span></td>
+                        <td style="box-sizing: border-box; padding: 5px; margin: 0px; border: 2px solid #000000; outline: 0px; font-size: 12px; vertical-align: middle; text-align: center; background: transparent; width: 44px; height: 27px;"><span style="color: #000000; font-family: verdana, geneva, sans-serif; font-size: 10pt; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">{{attr.Chest}}<br></span></td>
+                        <td style="box-sizing: border-box; padding: 5px; margin: 0px; border: 2px solid #000000; outline: 0px; font-size: 12px; vertical-align: middle; text-align: center; background: transparent; width: 40px; height: 27px;"><span style="color: #000000; font-size: 10pt; font-family: verdana, geneva, sans-serif;">{{attr.Length }}<br></span></td>
+                        <td style="box-sizing: border-box; padding: 5px; margin: 0px; border: 2px solid #000000; outline: 0px; font-size: 12px; vertical-align: middle; text-align: center; background: transparent; width: 40px; height: 27px;"><span style="color: #000000; font-size: 10pt; font-family: verdana, geneva, sans-serif;">{{attr.sleve }}<br></span></td>
+                        </tr>{% endfor %}
+                        </tbody>
+                        </table>
+                      
                   </div>
-              </div>
-              <div class="tab-pane fade" id="nav-review" role="tabpanel" aria-labelledby="nav-review-tab"
+                </div>
+                <div class="tab-pane fade" id="nav-review" role="tabpanel" aria-labelledby="nav-review-tab"
                   tabindex="0">
-                  <div class="product-review-section" data-aos="fade-up">
-                      <h5 class="intro-heading">Reviews</h5>
+                    <div class="product-review-section" data-aos="fade-up">
+                        <h5 class="intro-heading">Reviews</h5>
 
-                      <div class="review-wrapper">
-                          <div class="wrapper">
-                              <div class="wrapper-aurthor">
-                                  <div class="wrapper-info">
-                                      <div class="aurthor-img">
-                                          <img src="./assets/images/homepage-one/aurthor-img-1.webp"
-                                              alt="aurthor-img">
-                                      </div>
-                                      <div class="author-details">
-                                          <h5>Sajjad Hossain</h5>
-                                          <p>London, UK</p>
-                                      </div>
-                                  </div>
-                                  <div class="ratings">
-                                      <span>
-                                          <svg width="75" height="15" viewBox="0 0 75 15" fill="none"
-                                              xmlns="http://www.w3.org/2000/svg">
-                                              <path
-                                                  d="M7.5 0L9.18386 5.18237H14.6329L10.2245 8.38525L11.9084 13.5676L7.5 10.3647L3.09161 13.5676L4.77547 8.38525L0.367076 5.18237H5.81614L7.5 0Z"
-                                                  fill="#FFA800" />
-                                              <path
-                                                  d="M22.5 0L24.1839 5.18237H29.6329L25.2245 8.38525L26.9084 13.5676L22.5 10.3647L18.0916 13.5676L19.7755 8.38525L15.3671 5.18237H20.8161L22.5 0Z"
-                                                  fill="#FFA800" />
-                                              <path
-                                                  d="M37.5 0L39.1839 5.18237H44.6329L40.2245 8.38525L41.9084 13.5676L37.5 10.3647L33.0916 13.5676L34.7755 8.38525L30.3671 5.18237H35.8161L37.5 0Z"
-                                                  fill="#FFA800" />
-                                              <path
-                                                  d="M52.5 0L54.1839 5.18237H59.6329L55.2245 8.38525L56.9084 13.5676L52.5 10.3647L48.0916 13.5676L49.7755 8.38525L45.3671 5.18237H50.8161L52.5 0Z"
-                                                  fill="#FFA800" />
-                                              <path
-                                                  d="M67.5 0L69.1839 5.18237H74.6329L70.2245 8.38525L71.9084 13.5676L67.5 10.3647L63.0916 13.5676L64.7755 8.38525L60.3671 5.18237H65.8161L67.5 0Z"
-                                                  fill="#FFA800" />
-                                          </svg>
-                                      </span>
-                                      <span>(5.0)</span>
-                                  </div>
-                              </div>
-                              <div class="wrapper-description">
-                                  <p class="wrapper-details">Lorem Ipsum is simply dummy text of the printing and
-                                      typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                                      text ever since the redi 1500s, when an unknown printer took a galley of
-                                      type and scrambled it to make a type specimen book. It has survived not only
-                                      five centuries but also the on leap into electronic typesetting, remaining
-                                  </p>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+                        <div class="review-wrapper">
+                            {% for review in reviews %}
+                            <div class="wrapper">
+                                <div class="wrapper-aurthor">
+                                    <div class="wrapper-info">
+                                        <div class="aurthor-img">
+                                            <svg height="40px" width="30px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60.671 60.671" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <ellipse style="fill:#781ed2;" cx="30.336" cy="12.097" rx="9.997" ry="12.097"></ellipse> <path style="fill:#781ed2;" d="M35.64,30.079H25.031c-7.021,0-12.714,5.739-12.714,12.821v17.771h36.037V42.9 C48.354,35.818,42.661,30.079,35.64,30.079z"></path> </g> </g> </g></svg>
+                                        </div>
+                                        <div class="author-details">
+                                            <h5>{{review.author}}</h5>
+                                            <p>Date:{{review.commentDate}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="ratings">
+                                        <span>
+                                            <svg width="75" height="15" viewBox="0 0 75 15" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M7.5 0L9.18386 5.18237H14.6329L10.2245 8.38525L11.9084 13.5676L7.5 10.3647L3.09161 13.5676L4.77547 8.38525L0.367076 5.18237H5.81614L7.5 0Z"
+                                                    fill="#FFA800" />
+                                                <path
+                                                    d="M22.5 0L24.1839 5.18237H29.6329L25.2245 8.38525L26.9084 13.5676L22.5 10.3647L18.0916 13.5676L19.7755 8.38525L15.3671 5.18237H20.8161L22.5 0Z"
+                                                    fill="#FFA800" />
+                                                <path
+                                                    d="M37.5 0L39.1839 5.18237H44.6329L40.2245 8.38525L41.9084 13.5676L37.5 10.3647L33.0916 13.5676L34.7755 8.38525L30.3671 5.18237H35.8161L37.5 0Z"
+                                                    fill="#FFA800" />
+                                                <path
+                                                    d="M52.5 0L54.1839 5.18237H59.6329L55.2245 8.38525L56.9084 13.5676L52.5 10.3647L48.0916 13.5676L49.7755 8.38525L45.3671 5.18237H50.8161L52.5 0Z"
+                                                    fill="#FFA800" />
+                                                <path
+                                                    d="M67.5 0L69.1839 5.18237H74.6329L70.2245 8.38525L71.9084 13.5676L67.5 10.3647L63.0916 13.5676L64.7755 8.38525L60.3671 5.18237H65.8161L67.5 0Z"
+                                                    fill="#FFA800" />   
+                                            </svg>
+                                        </span>
+                                        <span>{{review.rating}}</span>
+                                    </div>
+                                </div>
+                                <div class="wrapper-description">
+                                <p class="wrapper-details">{{review.message}}
+                                    </p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div><br>
+                    <h5 class="intro-heading">Post Your Reviews</h5><br>
+                    {% if user.is_authenticated %}
+                    <form action="{% url 'my_reviews' viewproduct.category.slug viewproduct.slug %}" method="POST">
+                        {% csrf_token %}
+                        <div class="rate">
+                            <input type="radio" name="rating" id="rating10" value="5"><label for="rating10" title="5"></label>
+                            <input type="radio" name="rating" id="rating9" value="4.5"><label for="rating9" title="4.5" class="half"></label>
+                            <input type="radio" name="rating" id="rating8" value="4"><label for="rating10" title="4"></label>
+                            <input type="radio" name="rating" id="rating7" value="3.5"><label for="rating7" title="3.5" class="half"></label>
+                            <input type="radio" name="rating" id="rating6" value="3"><label for="rating10" title="3"></label>
+                            <input type="radio" name="rating" id="rating5" value="2.5"><label for="rating5" title="2.5" class="half"></label>
+                            <input type="radio" name="rating" id="rating4" value="2"><label for="rating10" title="2"></label>
+                            <input type="radio" name="rating" id="rating3" value="1.5"><label for="rating3" title="1.5" class="half"></label>
+                            <input type="radio" name="rating" id="rating2" value="1"><label for="rating10" title="1"></label>
+                            <input type="radio" name="rating" id="rating1" value="0.5"><label for="rating1" title="0.5" class="half"></label>
+                            <!-- <span>(5.0)</span> -->
+                        </div>
+                        <div class="form-group mt-3">
+                            <!-- <label for="">Content</label> -->
+                            <textarea name="new_review" rows="4" class="form-control" placeholder="Write your message" required></textarea>
+                        </div>
+                        <!-- <div class="form-group mt-3">
+                            <textarea class="form-control" rows="4" placeholder="Leave Your Comments" name="my_review"></textarea>
+                        </div> -->
+                        <div class="btn-group btn-group-lg">
+                            <button type="submit" class="btn btn-success mt-3">Submit</button>
+                        </div>
+                    </form>
+                    {% else %}
+                    <p> Please login for your review</p>
+                    {% endif %}
+                </div>
+                {% include 'common/alert.html' %}
+            </div>
+        </div>
+    </div>
 </section>
 <!--------------- products-details-end--------------->
 

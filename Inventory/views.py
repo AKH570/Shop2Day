@@ -1,12 +1,20 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
+from django.urls import reverse
+from django.contrib import messages
 from Inventory.models import (
                 PRODUCTS,IMAGE,ATTRIBUTES,STOCKS,
                 PRICE,ATTRIBUTEVALUE,SUBCATEGORY)
 from Category.models import CATEGORY
+from Review.models import Reviews
+from Review.forms import ReviewForm
 from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 from django.db.models import Q
-from django.http import HttpRequest,HttpResponse
+from django.http import HttpRequest,HttpResponse,HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
+from Cart.models import CART
+import json
 # Create your views here.
+
 # def Store(request):
 #     categorys = CATEGORY.objects.filter(slug__in=['popular-product','new-arrival'])
 #     #singlecate = allCategory.get(slug='all-item')
@@ -68,23 +76,16 @@ def categoryOne(request,category_slug=None,subcate_slug=None):
 #      #ChooseProduct = PRODUCTS.objects.filter(category__slug=cate_slug)
 #      #return HttpRequest('hello')
 #      return render(request,'Inventory/productCate1.html')
+"""
 
 def productDetails(request,cate_slug,prod_slug):
         ChooseProduct = get_object_or_404(PRODUCTS,category__slug=cate_slug,slug=prod_slug)
-        #PRODUCTS.objects.get(category__slug=cate_slug,slug=prod_slug)
         ProductImg = IMAGE.objects.get(product=ChooseProduct)
         price = PRICE.objects.get(product=ChooseProduct)
         stocks = STOCKS.objects.get(product=ChooseProduct)
-        #releted_products_img = IMAGE.objects.filter(product__category__slug='girls-7y')
-        attributes = ATTRIBUTEVALUE.objects.filter(attribute__name='Size').distinct()
-        category = get_object_or_404(CATEGORY,slug = cate_slug) 
-        #Releted item
-        products= PRODUCTS.objects.filter(category=category)
-        releteImg = IMAGE.objects.filter(product__in=products)
-        #colors = COLORS.objects.all()
-        #attrvalue=attributes(attribute='Size')
-        #if attrValues.name
-        #print(f'attribute:{attributes}')
+        attributes = ATTRIBUTEVALUE.objects.all()
+        releteImg = IMAGE.objects.all()
+        reviews = Reviews.objects.filter(product=ChooseProduct)
         # if ChooseProduct.is_discount==True:
         #      tag_price = round(price.saleprice - (price.saleprice*price.discount_percentage)/100,2)
         # else:
@@ -96,7 +97,49 @@ def productDetails(request,cate_slug,prod_slug):
                 'stocks':stocks,
                 'releted_img':releteImg,
                 'attributes':attributes,
+                'reviews':reviews,
                 }
         return render(request,'Inventory/productDetail.html',context)
 
-"""
+@login_required
+def UserReviews(request,cate_slug,prod_slug):
+    ChooseProduct = get_object_or_404(PRODUCTS,category__slug=cate_slug,slug=prod_slug)
+    if request.method == 'POST':
+        forms = ReviewForm(request.POST or None)
+        # print(f'form:{forms}')
+        if forms.is_valid():
+            rating = forms.cleaned_data['rating']
+            message = request.POST.get('new_review')
+            # comments = forms.cleaned_data.get('my_review',None)
+            author = request.user
+            ip = request.META.get('REMOTE_ADDR')
+            product = ChooseProduct
+            create_review = Reviews.objects.create(author=author,product=product,message=message,rating=rating,ip=ip)
+            create_review.save()
+            messages.success(request, 'Successfully reviewed product')
+            return HttpResponseRedirect(reverse('productDetails', args=(product.category.slug,product.slug, )))
+        else:
+            messages.error(request, 'Failed to add product.')
+    else:
+        return render(request,'Inventory/productDetail.html',context)
+
+def AddProduct(request,cate_slug,prod_slug):
+    all_param = (cate_slug,prod_slug, )
+    return HttpResponse(json.dumps(all_param))
+    # if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+    #     try:
+    #         producId = PRODUCTS.objects.get(id=product_id)
+    #         print(f'productid is:{producId}')
+    #         try:
+    #             checkCart = CART.objects.get(product__slug=producId)
+    #             checkCart.qty += 1
+    #             checkCart.save()
+
+    #             return JsonResponse({'status':'Success','message':'Cart added'})
+    #         except:
+    #             pass
+    #     except:
+    #         return JsonResponse({'status':'Failed','message':'Product not found'})
+    # else:
+    #     return JsonResponse({'status':'Failed','message':'Invalid request'})
+    

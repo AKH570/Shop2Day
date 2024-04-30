@@ -252,6 +252,8 @@ button {
   fill: currentColor;
   fill: #FFFFFF;
 }
+/* custom for product zoom */
+
 .product-wrapper .product-info {
   margin: 1.5rem 3rem 3rem;
 }
@@ -458,7 +460,7 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 0px;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
 }
 .header-top .header-profile {
   display: flex;
@@ -478,7 +480,7 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 0px;
-  padding: 1.9rem 0 2.2rem 0;
+  padding: 1.5rem 0 1.5rem 0;
 }
 .header-center .header-cart-items {
   display: flex;
@@ -1325,7 +1327,7 @@ width: 100%;
 }
 
 .wrapper-one {
-  background: url("../assets/images/homepage-one/syle-bg-one.webp") no-repeat center/cover;
+  background: url("../assets/images/homepage-one/style-bg-one.webp") no-repeat center/cover;
 }
 .wrapper-one .shop-btn {
   padding: 1.2rem 3.4rem;
@@ -1386,7 +1388,7 @@ width: 100%;
 }
 
 .wrapper-two {
-  background: url("../assets/images/homepage-one/style-bg-two.webp") no-repeat center/cover;
+  background: url("../assets/images/homepage-one/style-bg-3-two_1.webp") no-repeat center/cover;
 }
 .wrapper-two .shop-btn {
   padding: 1.2rem 3.4rem;

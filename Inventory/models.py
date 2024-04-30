@@ -35,12 +35,15 @@ class ATTRIBUTES(models.Model):
         verbose_name_plural = 'ATTRIBUTES'
 
 class ATTRIBUTEVALUE(models.Model):
-    values      = models.CharField(max_length=50,null=True,blank=True)
-    valueName   = models.CharField(max_length=50,null=True,blank=True)
-    attribute   =models.ForeignKey(ATTRIBUTES,on_delete=models.CASCADE,blank=True)
+    size      = models.CharField(max_length=50,null=True,blank=True)
+    Chest   = models.FloatField(max_length=50,null=True,blank=True)
+    Length  = models.FloatField(max_length=50,null=True,blank=True)
+    sleve = models.FloatField(max_length=50,null=True,blank=True)
+    color = models.CharField(max_length=50,null=True,blank=True)
+    
 
     def __str__(self):
-        return str(self.valueName)
+        return str(self.size)
     class Meta:
         verbose_name_plural='ATTRIBUTEVALUE'
 
@@ -58,7 +61,7 @@ class BRAND(models.Model):
 class PRODUCTS(models.Model):
     name            = models.CharField(max_length=100,null=False,blank=True)
     slug            = models.SlugField(unique=True)
-    barcode         = models.CharField(max_length=50,unique=True,null=True,blank=False)
+    barcode         = models.CharField(max_length=50,unique=True,null=True,blank=True)
     category        = models.ForeignKey(CATEGORY,on_delete=models.CASCADE,null=True)
     subcategory     = models.ForeignKey(SUBCATEGORY,on_delete=models.CASCADE,null=True)
     description     = models.TextField(max_length=200,null=True,blank=True)

@@ -4,15 +4,15 @@
   <div class="header-top-section">
       <div class="container">
           <div class="header-top">
-              <div class="header-profile">
+              <!-- <div class="header-profile">
                   <a href="user-profile.html"><span>Account</span></a>
                   <a href="order.html"><span>Track Order</span></a>
                   <a href="faq.html"><span>Support</span></a>
-              </div>
+              </div> -->
               <div class="header-contact d-none d-lg-block">
                   <a href="#">
-                      <span>Need help? Call us:</span>
-                      <span class="contact-number">+ 00645 4568</span>
+                      <span>For you order? Call us:</span>
+                      <span class="contact-number">+880 1912873379</span>
                   </a>
               </div>
           </div>
@@ -21,14 +21,15 @@
   <div class="header-center-section d-none d-lg-block">
       <div class="container">
           <div class="header-center">
-              <div class="logo">
-                  <a href="index.html">
-                      <img src="{% static 'assets/images/logos/logo.webp' %}" alt="logo">
+                <div class="logo">
+                  <a href="{% url 'index' %}">
+                      <img src="{% static 'assets/images/logos/barakah-one.webp' %}" alt="logo">
                   </a>
-              </div>
-              <div class="header-cart-items"> 
-                    {% if user.is_authenticated %}    
+                </div>                            
+                <div class="header-cart-items"> 
+                    {% if user.is_authenticated %}
                     <div class="header-compaire">
+                        <h6 style="color:black;"> Welcome {{user.first_name}}! you are loged in..</h6>
                         <a href="{% url 'logout' %}" class="cart-item">
                             <span>
                                 <svg height="27px" width="34px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-15.36 -15.36 542.72 542.72" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path style="fill:#e255dd;" d="M488.001,472.001h-304c-13.254,0-24-10.746-24-24V352c0-13.256,10.746-24,24-24s24,10.744,24,24 v72.002h256V88h-256v72c0,13.254-10.746,24-24,24s-24-10.746-24-24V64c0-13.256,10.746-24,24-24h304c13.254,0,24,10.744,24,24 v384.002C512.001,461.256,501.256,472.001,488.001,472.001z"></path> <path style="fill:#64C37D;" d="M359.995,232.001H81.939l31.03-31.03c9.373-9.373,9.373-24.568,0-33.941 c-9.371-9.373-24.57-9.373-33.941,0l-72,72c-0.005,0.005-0.008,0.01-0.014,0.014c-0.554,0.555-1.078,1.138-1.574,1.744 c-0.23,0.282-0.43,0.578-0.648,0.867c-0.251,0.338-0.514,0.667-0.749,1.018c-0.232,0.347-0.432,0.706-0.645,1.062 c-0.189,0.317-0.387,0.626-0.562,0.952c-0.195,0.363-0.36,0.736-0.534,1.107c-0.16,0.339-0.33,0.672-0.474,1.019 c-0.15,0.363-0.272,0.733-0.403,1.101c-0.133,0.371-0.275,0.736-0.389,1.115c-0.112,0.371-0.197,0.749-0.291,1.125 c-0.096,0.384-0.203,0.762-0.282,1.152c-0.088,0.438-0.139,0.88-0.202,1.322c-0.046,0.334-0.11,0.662-0.146,1.002 c-0.155,1.578-0.155,3.166,0,4.744c0.034,0.342,0.099,0.675,0.147,1.013c0.062,0.437,0.114,0.875,0.2,1.309 c0.078,0.395,0.187,0.778,0.285,1.165c0.094,0.371,0.174,0.744,0.286,1.112c0.117,0.382,0.261,0.754,0.395,1.128 c0.13,0.365,0.25,0.73,0.397,1.088c0.147,0.352,0.318,0.69,0.482,1.032c0.171,0.366,0.334,0.736,0.525,1.094 c0.178,0.331,0.381,0.646,0.571,0.968c0.21,0.35,0.408,0.704,0.635,1.045c0.242,0.362,0.509,0.701,0.768,1.046 c0.211,0.28,0.405,0.566,0.627,0.838c0.504,0.613,1.034,1.205,1.597,1.765l71.995,71.998c4.686,4.686,10.829,7.03,16.97,7.03 c6.141-0.002,12.285-2.344,16.971-7.03c9.373-9.373,9.373-24.568,0-33.941l-31.03-31.032h278.056c13.254,0,24-10.746,24-24 C383.995,242.745,373.251,232.001,359.995,232.001z"></path> </g></svg>
@@ -37,8 +38,9 @@
                                 logout
                             </span>
                         </a>  
-                  </div>
-                    <div class="header-cart">
+                    </div>
+                    
+                    <!-- <div class="header-cart">
                         <a href="{% url 'cart' %}" class="cart-item">
                             <span>
                                 <svg width="35" height="28" viewBox="0 0 35 28" fill="none"
@@ -166,9 +168,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
+                    {% else %}
                     <div class="header-user">
-                      <a href="{% url 'store' %}">
+                      <!-- <a href="{% url 'store' %}">
                           <span>
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
                                   class="fill-current">
@@ -178,9 +181,9 @@
                                   </path>
                               </svg>
                           </span>
-                        </a>
+                        </a> -->
                       <!-- if not login -->
-                      {% else %}
+                   
                         <a href="{% url 'registrationform' %}" class="cart-item">
                             <span>
                                 <svg width="34px" height="27px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.048"></g><g id="SVGRepo_iconCarrier"> <path d="M3 19C3.69137 16.6928 5.46998 16 9.5 16C13.53 16 15.3086 16.6928 16 19" stroke="#8924b7" stroke-width="2" stroke-linecap="round"></path> <path d="M13 9.5C13 11.433 11.433 13 9.5 13C7.567 13 6 11.433 6 9.5C6 7.567 7.567 6 9.5 6C11.433 6 13 7.567 13 9.5Z" stroke="#8924b7" stroke-width="2"></path> <path d="M15 5L16.5 6.5V6.5C16.7761 6.77614 17.2239 6.77614 17.5 6.5V6.5L21 3" stroke="#8924b7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
@@ -189,6 +192,8 @@
                                 Registration
                             </span>
                         </a>
+                    </div>
+                    <div class="header-user">
                         <a href="{% url 'login' %}" class="cart-item">
                             <span>
                                 <svg height="27px" width="34px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-15.36 -15.36 542.72 542.72" xml:space="preserve" fill="#000000" stroke="#000000" stroke-width="0.00512"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path style="fill:#c365af;" d="M379.955,269.328c0.229-0.341,0.427-0.696,0.635-1.046c0.192-0.322,0.394-0.634,0.57-0.965 c0.194-0.362,0.357-0.731,0.53-1.099c0.162-0.342,0.333-0.678,0.477-1.029c0.15-0.36,0.27-0.728,0.4-1.093 c0.134-0.373,0.278-0.741,0.394-1.123c0.112-0.37,0.194-0.744,0.288-1.118c0.098-0.386,0.205-0.766,0.283-1.16 c0.086-0.437,0.139-0.875,0.202-1.315c0.046-0.336,0.11-0.666,0.144-1.006c0.157-1.578,0.157-3.166,0-4.744 c-0.034-0.341-0.098-0.672-0.146-1.01c-0.061-0.437-0.114-0.877-0.2-1.31c-0.078-0.395-0.186-0.776-0.285-1.165 c-0.093-0.371-0.174-0.744-0.286-1.112c-0.115-0.384-0.261-0.755-0.395-1.131c-0.13-0.362-0.248-0.726-0.397-1.083 c-0.147-0.355-0.32-0.694-0.483-1.04c-0.171-0.363-0.333-0.73-0.523-1.086c-0.179-0.336-0.386-0.656-0.579-0.982 c-0.206-0.344-0.402-0.694-0.627-1.03c-0.245-0.368-0.52-0.715-0.786-1.067c-0.205-0.272-0.394-0.552-0.61-0.818 c-0.506-0.614-1.037-1.206-1.6-1.768l-71.994-71.995c-9.37-9.373-24.566-9.373-33.941,0c-9.373,9.373-9.373,24.568,0,33.941 l31.032,31.032H24c-13.254,0-24,10.744-24,24c0,13.254,10.746,24,24,24h278.054l-31.029,31.029c-9.373,9.373-9.373,24.568,0,33.941 c4.686,4.686,10.829,7.03,16.97,7.03c6.142,0,12.285-2.342,16.97-7.03l71.997-71.995c0.56-0.56,1.091-1.15,1.594-1.765 c0.226-0.272,0.419-0.56,0.629-0.838C379.445,270.027,379.714,269.688,379.955,269.328z"></path> <path style="fill:#A9A8AE;" d="M488,472H184c-13.254,0-24-10.746-24-24v-96.002c0-13.256,10.746-24,24-24s24,10.744,24,24V424h256 V88H208v72c0,13.254-10.746,24-24,24s-24-10.746-24-24V64c0-13.256,10.746-24,24-24h304c13.254,0,24,10.744,24,24v384 C512,461.256,501.254,472,488,472z"></path> </g></svg>
@@ -198,7 +203,7 @@
                             </span>
                         </a>
                     </div>
-                  {% endif %}
+                    {% endif %}
               </div>
           </div>
       </div>

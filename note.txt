@@ -4,6 +4,9 @@ page: product->
     side banner
 
 
+url: passing parameter
+https://docs.djangoproject.com/en/4.2/ref/templates/builtins/#url
+{% url 'some-url-name' arg1=v1 arg2=v2 %}
 
 Apps: Store:
 Ref: 
@@ -35,3 +38,6 @@ Index:func2
 
 Index:func3
 <a href="{{flash.product.productGet_url}}" class="product-details">{{flash.product.name}}3
+
+------ Remove bacground---
+https://www.remove.bg/upload

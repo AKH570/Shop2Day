@@ -46,7 +46,7 @@ def UserLogin(request):
         if user is not None:
             auth.login(request,user)
             # messages.success(request,'')
-            return redirect('store')
+            return redirect('index')
         else:
             messages.error(request,'wrong user and password')
             return redirect('login')
