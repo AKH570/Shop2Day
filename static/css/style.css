@@ -469,7 +469,7 @@ button {
   justify-content: center;
   gap: 2rem;
 }
-.header-top .header-contact .contact-number {
+.header-top .header-contact .contact-number{
   color: #AE1C9A;
   font-weight: 700;
 }
@@ -487,14 +487,14 @@ button {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 2.5rem;
+  gap: .5rem;
 }
 .header-center .header-cart-items .cart-item {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   justify-content: center;
-  gap: 5px;
+  gap: 3px;
 }
 .header-center .header-cart-items .cart-item .cart-text {
   font-size: 1.6rem;

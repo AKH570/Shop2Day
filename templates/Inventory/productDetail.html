@@ -83,7 +83,7 @@
                           <span class="inner-text">{{viewproduct.description}}</span></p>
                       <hr>
                       <div class="product-availability">
-                          <span>Stocks : </span>
+                          <span>Stock : </span>
                           {% if stocks.quantity == 0 %}
                           <span class="inner-text">Out of stock</span>
                           {% else %}
@@ -124,8 +124,13 @@
                                   <span class="plus">
                                       +
                                   </span> -->
+                                 
                                   <a href=""><i class="fas fa-minus-circle"></i></a>
-                                    <span class="number">1</span>
+                                  {% if cartProducts is None %}
+                                    <span id="qnty" class="productQty" data-qty="{{cartProducts.qty}}">0</span>
+                                  {% else %}
+                                    <span id="qnty" class="productQty" data-qty="{{cartProducts.qty}}">{{cartProducts.qty}}</span>
+                                    {% endif %}
                                     <a href="#" class="addprooduct" data-id="{{ viewproduct.slug }}" data-url="{% url 'add_prod' viewproduct.category.slug viewproduct.slug %}"><i class="fas fa-plus-circle"></i></a>
                                 </div>
                             </div>
@@ -223,23 +228,23 @@
                                       </svg>
                                   </span>
                               </a>
-                              <a href="#">
-                                  <span class="twitter">
-                                      <svg width="18" height="14" viewBox="0 0 18 14" fill="none"
+                                <a href="#">
+                                    <span class="twitter">
+                                        <svg width="18" height="14" viewBox="0 0 18 14" fill="none"
                                           xmlns="http://www.w3.org/2000/svg">
                                           <path
                                               d="M17.0722 1.60052C16.432 1.88505 15.7562 2.06289 15.0448 2.16959C15.7562 1.74278 16.3253 1.06701 16.5742 0.248969C15.8985 0.640206 15.1515 0.924742 14.3335 1.10258C13.6933 0.426804 12.7686 0 11.7727 0C9.85206 0 8.28711 1.56495 8.28711 3.48557C8.28711 3.7701 8.32268 4.01907 8.39382 4.26804C5.51289 4.12577 2.9165 2.73866 1.17371 0.604639C0.889175 1.13814 0.71134 1.70722 0.71134 2.34742C0.71134 3.5567 1.31598 4.62371 2.27629 5.26392C1.70722 5.22835 1.17371 5.08608 0.675773 4.83711V4.87268C0.675773 6.5799 1.88505 8.00258 3.48557 8.32268C3.20103 8.39382 2.88093 8.42938 2.56082 8.42938C2.34742 8.42938 2.09845 8.39382 1.88505 8.35825C2.34742 9.74536 3.62784 10.7768 5.15722 10.7768C3.94794 11.7015 2.45412 12.2706 0.818041 12.2706C0.533505 12.2706 0.248969 12.2706 0 12.2351C1.56495 13.2309 3.37887 13.8 5.37062 13.8C11.8082 13.8 15.3294 8.46495 15.3294 3.84124C15.3294 3.69897 15.3294 3.52113 15.3294 3.37887C16.0052 2.9165 16.6098 2.31186 17.0722 1.60052Z"
                                               fill="#3FD1FF" />
-                                      </svg>
-                                  </span>
-                              </a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+                                        </svg>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 <!--------------- products-info-end--------------->
 

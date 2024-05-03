@@ -16,17 +16,11 @@ $(document).ready(function(){
             success: function(response){
                 //  alert(response);
                 console.log(response)
-                }
-            })
+                $('#cartCounter').html(response.cartCount['items_in_cart']);
+                $('#qnty').html(response.prodQnty);
+            }
         })
-        
-        // $.ajax({
-        //     type: 'GET',
-        //     url: url,
-        //     data: data,
-        //     success: function(response){
-        //         // alert(response);
-        //         console.log(response);
-        //     }
-        // })
+    })
+    // to load the cartqty in product details pages:
+    // $('.productQty').each
 });

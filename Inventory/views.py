@@ -1,4 +1,5 @@
 from django.shortcuts import render,get_object_or_404,redirect
+from django.core.exceptions import ObjectDoesNotExist
 from django.urls import reverse
 from django.contrib import messages
 from Inventory.models import (
@@ -7,12 +8,13 @@ from Inventory.models import (
 from Category.models import CATEGORY
 from Review.models import Reviews
 from Review.forms import ReviewForm
-from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
-from django.db.models import Q
+#from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
+#from django.db.models import Q
 from django.http import HttpRequest,HttpResponse,HttpResponseRedirect,JsonResponse
 from django.contrib.auth.decorators import login_required
 from Cart.models import CART
 import json
+from Cart.context_processors import get_cart_items
 # Create your views here.
 
 # def Store(request):
@@ -80,12 +82,18 @@ def categoryOne(request,category_slug=None,subcate_slug=None):
 
 def productDetails(request,cate_slug,prod_slug):
         ChooseProduct = get_object_or_404(PRODUCTS,category__slug=cate_slug,slug=prod_slug)
+        print(f'choseproduc:{ChooseProduct}')
         ProductImg = IMAGE.objects.get(product=ChooseProduct)
         price = PRICE.objects.get(product=ChooseProduct)
         stocks = STOCKS.objects.get(product=ChooseProduct)
         attributes = ATTRIBUTEVALUE.objects.all()
         releteImg = IMAGE.objects.all()
         reviews = Reviews.objects.filter(product=ChooseProduct)
+        try:
+            cartProducts =CART.objects.get(user=request.user,product=ChooseProduct)
+            print(f'items{cartProducts}')
+        except ObjectDoesNotExist:
+           cartProducts=None
         # if ChooseProduct.is_discount==True:
         #      tag_price = round(price.saleprice - (price.saleprice*price.discount_percentage)/100,2)
         # else:
@@ -98,6 +106,7 @@ def productDetails(request,cate_slug,prod_slug):
                 'releted_img':releteImg,
                 'attributes':attributes,
                 'reviews':reviews,
+                'cartProducts':cartProducts,
                 }
         return render(request,'Inventory/productDetail.html',context)
 
@@ -133,30 +142,17 @@ def AddProduct(request,cate_slug,prod_slug):
                     productIncart = CART.objects.get(user=request.user,product=ChooseProduct)
                     productIncart.qty += 1
                     productIncart.save()
-                    return JsonResponse({'status':'Success','message':'Product increased'})
+                    return JsonResponse({'status':'Success','message':'Product increased','cartCount':get_cart_items(request),'prodQnty':productIncart.qty})
                 except:
                     productIncart = CART.objects.create(user=request.user,product=ChooseProduct,qty=1)
-                    return JsonResponse({'status':'Success','message':'Product added'})
+                    return JsonResponse({'status':'Success','message':'Product added','cartCount':get_cart_items(request),'prodQnty':productIncart.qty})
             except:
                 return JsonResponse({'status':'Failed','message':'This product is not exist'})
         else:
             return JsonResponse({'status':'Failed','message':'Invalid request'})
     else:
         return JsonResponse({'status':'Failed','message':'Please login'})
-    # if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-    #     try:
-    #         producId = PRODUCTS.objects.get(id=product_id)
-    #         print(f'productid is:{producId}')
-    #         try:
-    #             checkCart = CART.objects.get(product__slug=producId)
-    #             checkCart.qty += 1
-    #             checkCart.save()
 
-    #             return JsonResponse({'status':'Success','message':'Cart added'})
-    #         except:
-    #             pass
-    #     except:
-    #         return JsonResponse({'status':'Failed','message':'Product not found'})
-    # else:
-    #     return JsonResponse({'status':'Failed','message':'Invalid request'})
+def RemoveProduct(request,cate_slug,prod_slug):
+    pass
     

@@ -73,6 +73,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'Category.context_processors.categoryLink',
                 #'Category.context_processors.subcategoryLink',
+                # to get the number of items in cart for all pages
+                'Cart.context_processors.get_cart_items',
             ],
         },
     },
