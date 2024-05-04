@@ -89,11 +89,16 @@ def productDetails(request,cate_slug,prod_slug):
         attributes = ATTRIBUTEVALUE.objects.all()
         releteImg = IMAGE.objects.all()
         reviews = Reviews.objects.filter(product=ChooseProduct)
-        try:
-            cartProducts =CART.objects.get(user=request.user,product=ChooseProduct)
-            print(f'items{cartProducts}')
-        except ObjectDoesNotExist:
-           cartProducts=None
+        # cartProducts=0
+        if request.user.is_authenticated:
+            try:
+                cartProducts =CART.objects.get(user=request.user,product=ChooseProduct)
+                # print(f'items{cartProducts}')
+            except ObjectDoesNotExist:
+                cartProducts=None
+        else:
+            cartProducts=None
+            
         # if ChooseProduct.is_discount==True:
         #      tag_price = round(price.saleprice - (price.saleprice*price.discount_percentage)/100,2)
         # else:
@@ -151,7 +156,7 @@ def AddProduct(request,cate_slug,prod_slug):
         else:
             return JsonResponse({'status':'Failed','message':'Invalid request'})
     else:
-        return JsonResponse({'status':'Failed','message':'Please login'})
+        return JsonResponse({'status':'login_required','message':'You should login first'})
 
 def RemoveProduct(request,cate_slug,prod_slug):
     if request.user.is_authenticated:
@@ -171,9 +176,9 @@ def RemoveProduct(request,cate_slug,prod_slug):
                 except:
                     return JsonResponse({'status':'Success','message':'Your Cart is Empty','prodQnty':productIncart.qty})
             except:
-                return JsonResponse({'status':'Failed','message':'This product is not exist'})
+                return JsonResponse({'status':'Failed','message':'Your product is not exist'})
         else:
             return JsonResponse({'status':'Failed','message':'Invalid request'})
     else:
-        return JsonResponse({'status':'Failed','message':'Please login'})
+        return JsonResponse({'status':'login_required','message':'You should login first'})
     
