@@ -117,15 +117,7 @@
                       <div class="product-quantity">
                           <div class="quantity-wrapper">
                               <div class="quantity">
-                                  <!-- <span class="minus">
-                                      -
-                                  </span>
-                                  <span class="number">1</span>
-                                  <span class="plus">
-                                      +
-                                  </span> -->
-                                 
-                                  <a href=""><i class="fas fa-minus-circle"></i></a>
+                                    <a href="#" class="deleteprod" data-id="{{ viewproduct.slug }}" data-url="{% url 'removeprod' viewproduct.category.slug viewproduct.slug %}"><i class="fas fa-minus-circle"></i></a>
                                   {% if cartProducts is None %}
                                     <span id="qnty" class="productQty" data-qty="{{cartProducts.qty}}">0</span>
                                   {% else %}

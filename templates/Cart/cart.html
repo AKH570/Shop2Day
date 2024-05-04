@@ -48,7 +48,7 @@
                             </div>
                         </td>
                     </tr>
-                    {% for product in products %}
+                    {% for product in myProducts %}
                     <tr class="table-row ticket-row">
                         <td class="table-wrapper wrapper-product">
                             <div class="wrapper">
@@ -59,7 +59,7 @@
                                 </div>
                                 {% endfor %}
                                 <div class="wrapper-content">
-                                    <h5 class="heading">{{product.name}}</h5>
+                                    <h5 class="heading">{{product.product.name}}</h5>
                                 </div>
                             </div>
                         </td>
@@ -76,7 +76,7 @@
                                     
                                     <a href=""><i class="fas fa-minus-circle"></i></a>
                                     <span class="number">0</span>
-                                    <a href="" class="add_product" data-id="{{product.id}}" data-url="{% url 'add_prod' product.id %}"><i class="fas fa-plus-circle"></i></a>
+                                    <a href="" class="add_product" data-id="{{product.id}}" data-url=""><i class="fas fa-plus-circle"></i></a>
                                   
                                 </div>
                             </div>

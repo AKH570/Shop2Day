@@ -154,5 +154,26 @@ def AddProduct(request,cate_slug,prod_slug):
         return JsonResponse({'status':'Failed','message':'Please login'})
 
 def RemoveProduct(request,cate_slug,prod_slug):
-    pass
+    if request.user.is_authenticated:
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            try:
+                ChooseProduct = PRODUCTS.objects.get(category__slug=cate_slug,slug=prod_slug)
+                # check wether this product is already in cart
+                try:
+                    productIncart = CART.objects.get(user=request.user,product=ChooseProduct)
+                    if productIncart.qty >1:
+                        productIncart.qty -= 1
+                        productIncart.save()
+                    else:
+                        productIncart.delete()
+                        productIncart.qty =0
+                    return JsonResponse({'status':'Success','message':'Product deleted','cartCount':get_cart_items(request),'prodQnty':productIncart.qty})
+                except:
+                    return JsonResponse({'status':'Success','message':'Your Cart is Empty','prodQnty':productIncart.qty})
+            except:
+                return JsonResponse({'status':'Failed','message':'This product is not exist'})
+        else:
+            return JsonResponse({'status':'Failed','message':'Invalid request'})
+    else:
+        return JsonResponse({'status':'Failed','message':'Please login'})
     

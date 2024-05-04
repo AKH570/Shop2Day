@@ -30,7 +30,7 @@
                 </div>                            
                 <div class="header-cart-items">
                     <div class="header-cart">
-                        <a href="#" class="cart-item">
+                        <a href="{% url 'cart' %}" class="cart-item">
                             <i class="fa-solid fa-cart-shopping"></i>
                             <span class="badge badge-warning" id="cartCounter" style="border-radius: 50px; position: relative;bottom: 10px;left: -10px;color: rgb(15, 47, 232);">{{items_in_cart}}</span>
                         </a>
