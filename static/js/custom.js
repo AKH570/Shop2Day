@@ -19,14 +19,14 @@ $(document).ready(function(){
                 }else if(response.status == 'Failed'){
                     swal(response.message, "", "error")
                 }
-                else{
-                    $('#cartCounter').html(response.cartCount['items_in_cart']);
-                    $('#qnty').html(response.prodQnty);
+                else{ 
+                    $('#cartCounter').html(response.cartCount['items_in_cart']); //cartCounter is id of cart in navber//
+                    $('#qnty').html(response.prodQnty); //qnty is id of plus in productdetail page
                 }
             }
         })
     })
-    // delete product from cart:
+    // decrease product from cart:
     $('.deleteprod').on('click',function(e){
         e.preventDefault();
         // alert('test123');
@@ -52,4 +52,42 @@ $(document).ready(function(){
             }
         })
     })
+    // delete cart
+    $('.delCart').on('click',function(e){
+        e.preventDefault();
+        // alert('test123');
+        // return false; 
+        cart_id = $(this).attr('data-id');
+        url = $(this).attr('data-url');
+        $.ajax({
+            type: 'GET',
+            url: url,
+            success: function(response){
+                console.log(response)
+                if(response.status=='Failed'){
+                    swal(response.message, "", "error")
+                }
+                else{
+                    $('#cartCounter').html(response.cartCount['items_in_cart']);
+                    swal(response.message,'', "success")
+                    deleteCartItem(0, cart_id);
+                    checkemptycart();
+                }
+            }
+        })
+    })
+
+    // delete cart without reloading page
+    function deleteCartItem(itemQnty,cart_id){
+        if(itemQnty <= 0){
+            document.getElementById("cart_element-"+cart_id).remove()
+        }       
+    }
+    // to show text when cart is empty
+    function checkemptycart(){
+        var cartcounter = document.getElementById('cartCounter').innerHTML
+        if (cartcounter == 0){
+            document.getElementById('empty-cart').style.display = 'block';
+        }
+    }
 });

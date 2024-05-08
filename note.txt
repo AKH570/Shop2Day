@@ -8,6 +8,8 @@ url: passing parameter
 https://docs.djangoproject.com/en/4.2/ref/templates/builtins/#url
 {% url 'some-url-name' arg1=v1 arg2=v2 %}
 
+https://www.udemy.com/course/python-django-real-world-project-multi-vendor-restaurant/learn/lecture/33180332#questions/21761708
+
 Apps: Store:
 Ref: 
 https://stackoverflow.com/questions/65339289/how-to-get-the-total-of-sales-for-each-product-aggregation-of-foreignkey

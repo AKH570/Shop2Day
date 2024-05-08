@@ -2,8 +2,7 @@
 {% load static %}
 
 {% block content %}
-
-<!--------------- blog-tittle-section---------------->
+    <!--------------- blog-tittle-section---------------->
 <section class="blog about-blog">
     <div class="container">
         <div class="blog-bradcrum">
@@ -16,7 +15,7 @@
         </div>
     </div>
 </section>
-<!--------------- blog-tittle-section-end---------------->
+
 <!--------------- cart-section---------------->
 <section class="product-cart product footer-padding">
     <div class="container">
@@ -48,6 +47,11 @@
                             </div>
                         </td>
                     </tr>
+                    <tr class="table-row ticket-row " id="empty-cart" style="display: none;">
+                        <td class="table-wrapper wrapper-product">
+                            <h4 style="text-align:center;position: relative;"> Cart is Empty</h4>
+                        </td>
+                    </tr>
                     {% if myCart %}
                     {% for cart in myCart %}
                     <tr class="table-row ticket-row" id="cart_element-{{cart.id}}">
@@ -74,8 +78,8 @@
                         <td class="table-wrapper">
                             <div class="table-wrapper-center">
                                 <div class="quantity">
-                                    <span class="number">{{cart.qty}}</span>
-                                </div>
+                                    <span id="qnty" class="productQty" data-qty="{{cart.qty}}">{{cart.qty}}</span>
+                                </div>  
                             </div>
                         </td>
                         <td class="table-wrapper wrapper-total">
