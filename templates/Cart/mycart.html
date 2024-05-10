@@ -1,6 +1,6 @@
 {% extends 'common/base.html' %}
 {% load static %}
-
+{% load mathfilters %}
 {% block content %}
     <!--------------- blog-tittle-section---------------->
 <section class="blog about-blog">
@@ -64,7 +64,8 @@
                                 </div>
                                 {% endfor %}
                                 <div class="wrapper-content">
-                                    <h5 class="heading">{{cart.product.name}}</h5>
+                                    <a href="" class="product-details">{{cart.product.name}}</a>
+                                    <!-- <h5 class="heading">{{cart.product.name}}</h5> -->
                                 </div>
                             </div>
                         </td>
@@ -82,11 +83,15 @@
                                 </div>  
                             </div>
                         </td>
+                        
                         <td class="table-wrapper wrapper-total">
+                        {% for p in cart.product.price_set.all %}
                             <div class="table-wrapper-center">
-                                <h5 class="heading">$60.00</h5>
+                                <h5 class="heading">{{p.mrp|mul:cart.qty}}</h5>
                             </div>
+                            {% endfor %}
                         </td>
+                  
                         <td class="table-wrapper">
                             <div class="table-wrapper-center">
                                 <span>

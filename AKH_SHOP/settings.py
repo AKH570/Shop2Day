@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'Review',
     'Cart',
     'Accounts',
+    'mathfilters',
 ]
 
 MIDDLEWARE = [
@@ -75,6 +76,8 @@ TEMPLATES = [
                 #'Category.context_processors.subcategoryLink',
                 # to get the number of items in cart for all pages
                 'Cart.context_processors.get_cart_items',
+                # 'Cart.context_processors.cart_amt',
+                
             ],
         },
     },

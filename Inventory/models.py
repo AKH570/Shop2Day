@@ -119,8 +119,8 @@ class PRICE(models.Model):
     total_store_price = models.FloatField(null=True,blank=True)
     text        = models.TextField(max_length=50,null=True,blank=True)
 
-    def __str__(self):
-        return str(self.stock)
+    # def __str__(self):
+    #     return str(self.stock)
     def __str__(self):
         return str(self.product)
     class Meta:

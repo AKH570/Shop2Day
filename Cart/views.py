@@ -9,17 +9,25 @@ from Cart.context_processors import get_cart_items
 # Create your views here.
 @login_required(login_url='login')
 def myCart(request):
-        myCart = CART.objects.filter(user=request.user)
+    #Product_price = []
+    myCart = CART.objects.filter(user=request.user)
+    # qn = PRICE.objects.get(product= i.product for i in myCart)
+    print(myCart)
+    # price = PRICE.objects.filter(product=myCart.product)
+    # print(price)
+    # if myCart:
+    #     for i in myCart:
+    #         price = PRICE.objects.get(product=i.product)
+            # Qnty = i.qty
+            # product = i.product
+            # Product_price.qnty_price = i.qty*price.mrp
 
-    # products = PRODUCTS.objects.filter(Q(slug ='half-sleev-001')| Q(slug='half-sleev-006'))
-    # img = IMAGE.objects.filter(product__in=products)
-
-        context ={
-            'myCart':myCart,
-            # 'products':products,
-            # 'img':img,
-        }
-        return render(request,'Cart/mycart.html',context)
+        
+    context ={
+        'myCart':myCart,
+        # 'price':price,
+    }
+    return render(request,'Cart/mycart.html',context)
 
 def deleteCart(request, cartId):
     if request.user.is_authenticated:
@@ -27,7 +35,7 @@ def deleteCart(request, cartId):
             try:
                 #ChooseProduct = PRODUCTS.objects.get(slug=prod_slug)
                 cartItems = CART.objects.get(user=request.user,id=cartId)
-                print(f'cartid : {cartItems}')
+                #print(f'cartid : {cartItems}')
                 if cartItems:
                     cartItems.delete()
                     return JsonResponse({'status':'Success','message':'Your Cart Item is deleted','cartCount':get_cart_items(request)})
