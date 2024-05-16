@@ -47,12 +47,23 @@
                             </div>
                         </td>
                     </tr>
+                    <!-- using for once this cart will be empty -->
                     <tr class="table-row ticket-row " id="empty-cart" style="display: none;">
                         <td class="table-wrapper wrapper-product">
                             <h4 style="text-align:center;position: relative;"> Cart is Empty</h4>
                         </td>
                     </tr>
-                    {% if myCart %}
+                    <tr class="wishlist-btn cart-btn" id="shop-here" style="display: none;">
+                        <td class="table-wrapper wrapper-product">
+                            <a href="{% url 'index' %}" class="shop-btn">Shop Here</a>
+                        </td>
+                    </tr>
+                    <!-- <tr class="wishlist-btn cart-btn">
+                        <td class="table-wrapper wrapper-product">
+                            <a href="{% url 'mycheckout' %}" class="shop-btn">Proceed to Checkout</a>
+                        </td>
+                    </tr> -->
+                {% if myCart %}
                     {% for cart in myCart %}
                     <tr class="table-row ticket-row" id="cart_element-{{cart.id}}">
                         <td class="table-wrapper wrapper-product">
@@ -64,7 +75,7 @@
                                 </div>
                                 {% endfor %}
                                 <div class="wrapper-content">
-                                    <a href="" class="product-details">{{cart.product.name}}</a>
+                                    <a href="{{cart.product.productGet_url}}" class="product-details">{{cart.product.name}}</a>
                                     <!-- <h5 class="heading">{{cart.product.name}}</h5> -->
                                 </div>
                             </div>
@@ -101,21 +112,31 @@
                         </td>
                     </tr>
                     {% endfor %}
-                    {% else %}
-                    <tr class="table-row ticket-row">
+                    <tr class="wishlist-btn cart-btn">
                         <td class="table-wrapper wrapper-product">
-                            <h4 style="text-align:center;position: relative;"> Cart is Empty</h4>
+                            <a href="{% url 'mycheckout' %}" class="shop-btn">Proceed to Checkout</a>
                         </td>
                     </tr>
-                    {% endif %}
+                {% else %}
+                    <tr class="table-row ticket-row">
+                        <td class="table-wrapper wrapper-product">
+                            <h4 style="text-align:center;position: relative;">Your Cart is Empty</h4>
+                        </td>
+                    </tr>
+                    <tr class="wishlist-btn cart-btn">
+                        <td class="table-wrapper wrapper-product">
+                            <a href="{% url 'index' %}" class="shop-btn">Shop Here</a>
+                        </td>
+                    </tr>
+                {% endif %}
                 </tbody>
             </table>
         </div>
-        <div class="wishlist-btn cart-btn">
-            <a href="empty-cart.html" class="clean-btn">Clear Cart</a>
-            <a href="#" class="shop-btn update-btn">Update Cart</a>
-            <a href="checkout.html" class="shop-btn">Proceed to Checkout</a>
-        </div>
+        <!-- <div class="wishlist-btn cart-btn">
+            
+            <a href="#" class="shop-btn update-btn">Update Cart</a> 
+            <a href="{% url 'mycheckout' %}" class="shop-btn">Proceed to Checkout</a>
+        </div> -->
     </div>
 </section>
 <!--------------- cart-section-end---------------->

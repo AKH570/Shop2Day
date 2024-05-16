@@ -134,8 +134,8 @@ button {
 }
 
 .shop-btn {
-  padding: 1.2rem 3.4rem;
-  margin: 4rem 0;
+  padding: 1.2rem 0;
+  margin: 4rem 2rem;
   text-align: center;
   border-radius: 3rem;
   display: inline-block;
@@ -3230,7 +3230,7 @@ table .ticket-row:hover {
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 .account-section .account-inner-form .review-form-name {
   width: 100%;

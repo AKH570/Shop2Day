@@ -53,3 +53,21 @@ input:checked + label:hover, input:checked ~ label:hover,input:checked ~ label:h
 label:hover ~ input:checked ~ label{
     color: #cc9000;
 }
+
+/* hide redio button in payment method */
+.order-summery .payment-type .checkbox-item [type=radio]{
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* img style */
+.order-summery .payment-type .checkbox-item [type=radio] + img{
+    cursor: pointer;
+}
+
+/* once checked img */
+.order-summery .payment-type .checkbox-item [type=radio] + img{
+    outline: 2px solid hsl(260, 96%, 48%);
+}

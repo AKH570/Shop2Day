@@ -12,7 +12,8 @@
                     {% csrf_token %}
                     <div class=" account-inner-form">
                         <div class="review-form-name">
-                            <label for="fname" class="form-label">First Name*</label>{{form.first_name}}
+                            <label for="fname" class="form-label">First Name*</label>
+                            {{form.first_name}}
                         </div>
                         <div class="review-form-name">
                             <label for="lname" class="form-label">Last Name*</label>
@@ -67,7 +68,7 @@
                 <div class="login-btn text-center">
                     <!-- <a href="#" class="shop-btn">Create an Account</a> -->
                     <!-- <input type="submit" class="shop-btn" value="Create an Account"> -->
-                    <span class="shop-account">Already have an account ?<a href="login.html">Log In</a></span>
+                    <span class="shop-account">Already have an account ?<a href="{% url 'login' %}">Log In</a></span>
                 </div><br>
                 <div class="login-btn text-center">
                     {% include 'common/alert.html' %}

@@ -72,6 +72,7 @@ $(document).ready(function(){
                     swal(response.message,'', "success")
                     deleteCartItem(0, cart_id);
                     checkemptycart();
+                    shophere();
                 }
             }
         })
@@ -88,6 +89,12 @@ $(document).ready(function(){
         var cartcounter = document.getElementById('cartCounter').innerHTML
         if (cartcounter == 0){
             document.getElementById('empty-cart').style.display = 'block';
+        }
+    }
+    function shophere(){
+        var c_tcounter = document.getElementById('cartCounter').innerHTML
+        if (c_tcounter == 0){
+            document.getElementById('shop-here').style.display = 'block';
         }
     }
 });
