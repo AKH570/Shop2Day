@@ -21,6 +21,8 @@
 <section class="checkout product footer-padding">
     <div class="container">
         <div class="checkout-section">
+            <form method="POST" action="#">
+                {% csrf_token %}
             <div class="row gy-5">
                 <div class="col-lg-6">
                     <div class="checkout-wrapper">
@@ -28,8 +30,7 @@
                         <div class="account-section billing-section">
                             <h5 class="wrapper-heading">Billing Details</h5>
                             <div class="review-form">
-                                <form method="POST" action="#">
-                                    {% csrf_token %}
+                                
                                     <div class=" account-inner-form">
                                         <div class="review-form-name">
                                             <label class="form-label">First Name*</label>
@@ -64,9 +65,7 @@
                                             {{form.country}}
                                         </div>
                                     </div>
-                                
                             </div>
-                            
                         </div>
                     </div>
                 </div>
@@ -128,26 +127,51 @@
                                             <input type="radio" name="payment-method" value="bkash">
                                             <img src="{% static 'assets/images/payment/bkash.png' %}" alt="bkash" width="100">
                                         </label>
+                                        &emsp;
                                         <label>
                                             <input type="radio" name="payment-method" value="nagad">
                                             <img src="{% static 'assets/images/payment/nagad.png' %}" alt="bkash" width="100">
                                         </label>
+                                        &emsp; <!--to make space between two payment method-->
                                         <label>
-                                            <input type="radio" name="payment-method" value="cod">
+                                            <input type="radio" name="payment-method" value="cash-on-delivery">
                                             <img src="{% static 'assets/images/payment/cod.png' %}" alt="bkash" width="100">
                                         </label>
                                     </div>
                                 </div>
-                                <button class="shop-btn" type="submit">Place Order Now</button>
+                                <span class="text-danger" style="font-size:medium" id="paymethod-error"></span>
+                                <button class="shop-btn" onclick="paymentmethodChecked()" type="submit">Place Order Now</button>
                                 <a href="{% url 'index' %}" class="shop-btn" style="margin-top: 5px;">Back To Shopping</a>
                             </div>
-                            </form>
                         </div>
                     </div>
                 </div>
             </div>
+        </form>
         </div>
     </div>
 </section>
 <!--------------- checkout-section-end---------------->
+<!-- Error msg setup by jquery if not payment method selected -->
+<script>
+    function paymentmethodChecked(){
+        var paymethod = $("input[name=payment-method]:checked").val()
+        if(!paymethod){
+            $('#paymethod-error').html("Please select one payment method")
+            return false;
+        }else{
+            var payconf = confirm('Your payment method is ' +paymethod+ ' Please submit "Ok" to continue')
+            if(payconf == true){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        
+    }
+    // to vanish the error msg once user set payment method
+    $('input[name=payment-method]').on('change', function(){
+        $('#paymethod-error').html('');
+    })
+</script>
 {% endblock content %}

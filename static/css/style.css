@@ -3108,16 +3108,17 @@ table .ticket-row:hover {
 .order-summery .payment-type .checkbox-item {
   gap: 2rem;
   width: 100%;
+  outline: 2px solid #AE1C9A;
   border-radius: 0.5rem;
-  transition: all 0.3s;
+  /* transition: all 0.3s; */
   padding: 2rem;
 }
-.order-summery .payment-type .checkbox-item input {
+/* .order-summery .payment-type .checkbox-item input {
   accent-color: #AE1C9A;
-}
-.order-summery .payment-type .checkbox-item:hover {
+} */
+/* .order-summery .payment-type .checkbox-item:hover {
   background-color: rgba(174, 28, 154, 0.08);
-}
+} */
 .order-summery .payment-type .inner-text {
   display: block;
   color: #797979;
