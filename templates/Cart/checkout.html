@@ -21,7 +21,7 @@
 <section class="checkout product footer-padding">
     <div class="container">
         <div class="checkout-section">
-            <form method="POST" action="#">
+        <form method="POST" action="{% url 'order' %}">
                 {% csrf_token %}
             <div class="row gy-5">
                 <div class="col-lg-6">
@@ -110,7 +110,7 @@
 
                                             </div>
                                             <div class="price">
-                                                <h5 class="wrapper-heading">Tk 50</h5>
+                                                <h5 class="wrapper-heading">Tk 0</h5>
                                             </div>
                                         </li>
                                     </ul>

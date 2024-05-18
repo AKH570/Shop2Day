@@ -1,0 +1,101 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% load mathfilters %}
+{% block content %}
+
+    <!--------------- blog-tittle-section---------------->
+    <section class="blog about-blog">
+        <div class="container">
+            <div class="blog-bradcrum">
+                <span><a href="index.html">Home</a></span>
+                <span class="devider">/</span>
+                <span><a href="#">Order</a></span>
+            </div>
+            <div class="blog-heading about-heading">
+                <h1 class="heading">Order</h1>
+            </div>
+        </div>
+    </section>
+    <!--------------- blog-tittle-section-end---------------->
+
+    <!--------------- order-section---------------->
+    <section class="checkout product footer-padding">
+        <div class="container">
+            <div class="checkout-section">
+                <div class="row gy-5">
+                    <div class="col-lg-6">
+                        <div class="checkout-wrapper">
+                            <!-- <a href="login.html" class="shop-btn">Log into Your Account</a> -->
+                            <div class="account-section billing-section">
+                                <h5 class="wrapper-heading">Billing Details</h5>
+                                <div class="review-form">
+                                    <h4>Your address</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="checkout-wrapper">
+                            <!-- <a href="#" class="shop-btn">Enter Coupon Code</a> -->
+                            <div class="account-section billing-section">
+                                <h5 class="wrapper-heading">Order Summary</h5>
+                                <div class="order-summery">
+                                    <div class="subtotal product-total">
+                                        <h5 class="wrapper-heading">PRODUCT</h5>
+                                        <h5 class="wrapper-heading">TOTAL</h5>
+                                    </div>
+                                    <hr>
+                                    <div class="subtotal product-total">
+                                        <!-- <ul class="product-list">
+                                            {% for item in myCart %}
+                                            <li>
+                                                <div class="product-info">
+                                                    <h5 class="wrapper-heading">{{ item.product.name }}</h5>
+                                                    
+                                                </div>
+                                                {% for s in item.product.price_set.all %}
+                                                <div class="price">
+                                                    <h5 class="wrapper-heading">{{s.mrp|mul:item.qty}}</h5>
+                                                </div>{% endfor %}
+                                            </li>
+                                            {% endfor %}
+                                        </ul> -->
+                                    </div>
+                                    <hr>
+                                    <div class="subtotal product-total">
+                                        <h5 class="wrapper-heading">Total</h5>
+                                        <!-- <h5 class="wrapper-heading">BDT {{subtotal}}</h5> -->
+                                    </div>
+                                    <div class="subtotal product-total">
+                                        <ul class="product-list">
+                                            <li>
+                                                <div class="product-info">
+                                                    <p class="paragraph">SHIPPING</p>
+                                                    <h5 class="wrapper-heading">Free Shipping</h5>
+    
+                                                </div>
+                                                <div class="price">
+                                                    <h5 class="wrapper-heading">Tk 0</h5>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <hr>
+                                    <div class="subtotal total">
+                                        <h5 class="wrapper-heading">GRAND TOTAL</h5>
+                                        <!-- <h5 class="wrapper-heading price">BDT {{subtotal}}</h5> -->
+                                    </div>
+                                    <button class="shop-btn" type="submit">Confirm your Order</button>
+                                    <!-- <a href="{% url 'index' %}" class="shop-btn" style="margin-top: 5px;">Back To Shopping</a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </section>
+    <!--------------- order-section-end---------------->
+
+{% endblock content %}
