@@ -21,7 +21,7 @@
 <section class="checkout product footer-padding">
     <div class="container">
         <div class="checkout-section">
-        <form method="POST" action="{% url 'order' %}">
+        <form method="POST" action="{% url 'neworder'  %}">
                 {% csrf_token %}
             <div class="row gy-5">
                 <div class="col-lg-6">
@@ -76,21 +76,33 @@
                             <h5 class="wrapper-heading">Order Summary</h5>
                             <div class="order-summery">
                                 <div class="subtotal product-total">
-                                    <h5 class="wrapper-heading">PRODUCT</h5>
+                                    <h5 class="wrapper-heading">ITEM</h5>
+                                    <h5 class="wrapper-heading" style="position: relative;left: 125px;">Qty</h5>
                                     <h5 class="wrapper-heading">TOTAL</h5>
                                 </div>
                                 <hr>
                                 <div class="subtotal product-total">
                                     <ul class="product-list">
                                         {% for item in myCart %}
-                                        <li>
-                                            <div class="product-info">
-                                                <h5 class="wrapper-heading">{{ item.product.name }}</h5>
-                                                <!-- <p class="paragraph">64GB, Black, 44mm, Chain Belt</p> -->
+                                        <li>    
+                                            <div class="table" style="width:auto;">
+                                                <tbody>
+                                                    {% for img in item.product.image_set.all %}
+                                                    <tr>
+                                                        <td><img src="{{img.url.url}}" width="50"  alt=""></td>
+                                                    </tr>
+                                                     {% endfor %}   
+                                                </tbody>
                                             </div>
+                                            <div class="product-info" style="position:relative;right:90px;">
+                                                <h5 class="wrapper-heading">{{ item.product.name }}</h5>   
+                                            </div>
+                                            <span class="productQty" style="font-size: medium;">{{item.qty}}</span>
+                                                
+                                             
                                             {% for s in item.product.price_set.all %}
                                             <div class="price">
-                                                <h5 class="wrapper-heading">{{s.mrp|mul:item.qty}}</h5>
+                                                <h5 class="wrapper-heading" style="font-size: medium;">{{s.mrp|mul:item.qty}}</h5>
                                             </div>{% endfor %}
                                         </li>
                                         {% endfor %}
@@ -98,43 +110,50 @@
                                 </div>
                                 <hr>
                                 <div class="subtotal product-total">
-                                    <h5 class="wrapper-heading">Total</h5>
-                                    <h5 class="wrapper-heading">BDT {{subtotal}}</h5>
+                                    <h5 class="wrapper-heading" style="font-size: large;">Total</h5>
+                                    <h5 class="wrapper-heading" style="font-size: large;">BDT {{total}}</h5>
                                 </div>
                                 <div class="subtotal product-total">
                                     <ul class="product-list">
                                         <li>
                                             <div class="product-info">
                                                 <p class="paragraph">SHIPPING</p>
-                                                <h5 class="wrapper-heading">Free Shipping</h5>
+                                                <!-- <h5 class="wrapper-heading">Free Shipping</h5> -->
 
                                             </div>
+                                            {% if delivery_charge %}
+                                            <div class="price">
+                                                
+                                                <h5 class="wrapper-heading">Tk{{delivery_charge}}</h5>
+                                            </div>
+                                            {% else %}
                                             <div class="price">
                                                 <h5 class="wrapper-heading">Tk 0</h5>
                                             </div>
+                                            {% endif %}
                                         </li>
                                     </ul>
                                 </div>
                                 <hr>
                                 <div class="subtotal total">
                                     <h5 class="wrapper-heading">GRAND TOTAL</h5>
-                                    <h5 class="wrapper-heading price">BDT {{subtotal}}</h5>
+                                    <h5 class="wrapper-heading price">BDT {{Grand_Total}}</h5>
                                 </div>
                                 <!-- select payment method -->
                                 <div class="subtotal payment-type">
                                     <div class="checkbox-item">
                                         <label>
                                             <input type="radio" name="payment-method" value="bkash">
-                                            <img src="{% static 'assets/images/payment/bkash.png' %}" alt="bkash" width="100">
+                                            <img src="{% static 'assets/images/payment/bkash.png' %}" alt="bKash" width="100">
                                         </label>
                                         &emsp;
                                         <label>
-                                            <input type="radio" name="payment-method" value="nagad">
+                                            <input type="radio" name="payment-method" value="Nagad">
                                             <img src="{% static 'assets/images/payment/nagad.png' %}" alt="bkash" width="100">
                                         </label>
                                         &emsp; <!--to make space between two payment method-->
                                         <label>
-                                            <input type="radio" name="payment-method" value="cash-on-delivery">
+                                            <input type="radio" name="payment-method" value="Cash-on-Delivery">
                                             <img src="{% static 'assets/images/payment/cod.png' %}" alt="bkash" width="100">
                                         </label>
                                     </div>
@@ -155,7 +174,7 @@
 <!-- Error msg setup by jquery if not payment method selected -->
 <script>
     function paymentmethodChecked(){
-        var paymethod = $("input[name=payment-method]:checked").val()
+        var paymethod = $("input[name='payment-method']:checked").val()
         if(!paymethod){
             $('#paymethod-error').html("Please select one payment method")
             return false;

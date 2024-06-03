@@ -6,17 +6,8 @@ from django.contrib import messages,auth
 
 def UserRegistraionform(request):
     if request.method == 'POST':
-       #print(request.POST)
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            # password = form.cleaned_data['password']
-            # user = form.save(commit=False)
-            # user.set_password(password)
-            # user.role = User.CUSTOMER
-            # print(user)
-            # user.save()
-            # print(user)
-
             first_name = form.cleaned_data['first_name']
             last_name = form.cleaned_data['last_name']
             username = form.cleaned_data['username']

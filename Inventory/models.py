@@ -67,6 +67,7 @@ class PRODUCTS(models.Model):
     description     = models.TextField(max_length=200,null=True,blank=True)
     attributevalue  = models.ManyToManyField(ATTRIBUTEVALUE,blank=True)
     brandname       = models.ForeignKey(BRAND,on_delete=models.CASCADE,null=True)
+    product_price   = models.DecimalField(max_digits=10,decimal_places=2,null=True,blank=True)
     in_stocks       = models.BooleanField(default=True)
     is_active       = models.BooleanField(default=True)
     is_discount     = models.BooleanField(default=False)
@@ -105,7 +106,7 @@ class STOCKS(models.Model):
     def __str__(self):
         return str(self.product)
     def __str__(self):
-        return str(self.stocks_qty)
+        return str(self.quantity)
 
 #link for discount:https://stackoverflow.com/questions/73813646/django-models-to-calculate-discount
 class PRICE(models.Model):
@@ -122,7 +123,7 @@ class PRICE(models.Model):
     # def __str__(self):
     #     return str(self.stock)
     def __str__(self):
-        return str(self.product)
+        return str(self.mrp)
     class Meta:
         verbose_name_plural = 'PRICES'
     

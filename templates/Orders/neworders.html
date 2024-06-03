@@ -26,12 +26,20 @@
                     <div class="col-lg-6">
                         <div class="checkout-wrapper">
                             <!-- <a href="login.html" class="shop-btn">Log into Your Account</a> -->
+                            {% if user.is_authenticated %}
                             <div class="account-section billing-section">
-                                <h5 class="wrapper-heading">Billing Details</h5>
+                                <h5 class="wrapper-heading">Your billing details</h5><hr>
                                 <div class="review-form">
-                                    <h4>Your address</h4>
+                                    <div style="font-size: large;"><b>{{ order.name }}</b></div><br>
+                                    <div style="font-size: medium;"><strong>Address:</strong> {{order.address}}, {{ order.district }}, {{ order.country }}</div>
+                                    <div style="font-size: medium;"><strong>Email:</strong> {{ order.email }}</div>
+                                    <div style="font-size: medium;"><strong>Phone: </strong>{{ order.phone_no }}</div>
+                                    <div style="font-size: medium;"><strong>Payment Method:</strong> {{order.paymentMethod}}</div>
+                                    <br>
+                                    <div><a href="{% url 'mycheckout' %}" class="btn btn-outline-success" style="font-size: small;"><strong>Edit Your Address</strong></a></div>
                                 </div>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -41,41 +49,50 @@
                                 <h5 class="wrapper-heading">Order Summary</h5>
                                 <div class="order-summery">
                                     <div class="subtotal product-total">
-                                        <h5 class="wrapper-heading">PRODUCT</h5>
+                                        <h5 class="wrapper-heading">ITEM</h5>
+                                        <h5 class="wrapper-heading" style="position: relative;left: 125px;">Qty</h5>
                                         <h5 class="wrapper-heading">TOTAL</h5>
-                                    </div>
+                                    </div>                              
                                     <hr>
                                     <div class="subtotal product-total">
-                                        <!-- <ul class="product-list">
+                                        <ul class="product-list">
                                             {% for item in myCart %}
-                                            <li>
-                                                <div class="product-info">
-                                                    <h5 class="wrapper-heading">{{ item.product.name }}</h5>
-                                                    
+                                            <li>    
+                                                <div class="table" style="width:auto;">
+                                                    <tbody>
+                                                        {% for img in item.product.image_set.all %}
+                                                        <tr>
+                                                            <td><img src="{{img.url.url}}" width="50"  alt=""></td>
+                                                        </tr>
+                                                         {% endfor %}   
+                                                    </tbody>
                                                 </div>
-                                                {% for s in item.product.price_set.all %}
+                                                <div class="product-info" style="position:relative;right:90px;">
+                                                    <h5 class="wrapper-heading">{{ item.product.name }}</h5>   
+                                                </div>
+                                                <span class="productQty" style="font-size: medium;">{{item.qty}}</span>
+                                                
                                                 <div class="price">
-                                                    <h5 class="wrapper-heading">{{s.mrp|mul:item.qty}}</h5>
-                                                </div>{% endfor %}
+                                                    <h5 class="wrapper-heading" style="font-size: medium;">{{item.subtotal}}</h5>
+                                                </div>
                                             </li>
                                             {% endfor %}
-                                        </ul> -->
+                                        </ul>
                                     </div>
-                                    <hr>
                                     <div class="subtotal product-total">
-                                        <h5 class="wrapper-heading">Total</h5>
-                                        <!-- <h5 class="wrapper-heading">BDT {{subtotal}}</h5> -->
+                                        <h5 class="wrapper-heading" style="font-size: large;">Total</h5>
+                                        <h5 class="wrapper-heading" style="font-size: large;">BDT {{total}}</h5>
                                     </div>
                                     <div class="subtotal product-total">
                                         <ul class="product-list">
                                             <li>
                                                 <div class="product-info">
-                                                    <p class="paragraph">SHIPPING</p>
-                                                    <h5 class="wrapper-heading">Free Shipping</h5>
+                                                    <p class="paragraph">Delivery Charge :</p>
+                                                    <!-- <h5 class="wrapper-heading">Free Shipping</h5> -->
     
                                                 </div>
                                                 <div class="price">
-                                                    <h5 class="wrapper-heading">Tk 0</h5>
+                                                    <h5 class="wrapper-heading">Tk {{delivery_charge}}</h5>
                                                 </div>
                                             </li>
                                         </ul>
@@ -83,9 +100,10 @@
                                     <hr>
                                     <div class="subtotal total">
                                         <h5 class="wrapper-heading">GRAND TOTAL</h5>
-                                        <!-- <h5 class="wrapper-heading price">BDT {{subtotal}}</h5> -->
+                                        <h5 class="wrapper-heading price">BDT {{Grand_Total}}</h5>
                                     </div>
-                                    <button class="shop-btn" type="submit">Confirm your Order</button>
+                                    <a href="{% url 'orderconfirm' orderno=order.orderNo %}" class="shop-btn" style="margin-top: 5px;">confirm order</a>
+                                    <!-- <button class="shop-btn" type="submit">Confirm your Order</button> -->
                                     <!-- <a href="{% url 'index' %}" class="shop-btn" style="margin-top: 5px;">Back To Shopping</a> -->
                                 </div>
                             </div>

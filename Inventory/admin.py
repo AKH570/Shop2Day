@@ -24,20 +24,20 @@ class BrandAdmin(admin.ModelAdmin):
 #ADMIN FOR PRODUCT
 class StockInline(admin.TabularInline):
     model = STOCKS
-    extra = 1
-    classes=('collapse',)
-# class PriceInline(admin.TabularInline):
-#     model = PRICE.stock
-#     extra = 1
+    extra = 0
+    classes=('colapse',)
+class PriceInline(admin.TabularInline):
+    model = PRICE
+    extra = 0
 class ImageInline(admin.TabularInline):
     model = IMAGE
-    extra = 1
+    extra = 0
 @admin.register(PRODUCTS)
 #admin.site.site_header = “Product Review Admin”
 class ProductAdmin(admin.ModelAdmin):
-    inlines = [StockInline,ImageInline]
+    inlines = [StockInline,PriceInline,ImageInline]
     list_display=['id','name','slug','barcode','category','subcategory',
-                    'brandname','Owner','in_stocks',
+                    'brandname','product_price','Owner','in_stocks',
                     'is_active','is_discount','create_date']
     search_fields=('name','subcategory__name',)
     prepopulated_fields ={'slug':('name',)}
@@ -48,7 +48,7 @@ class ProductAdmin(admin.ModelAdmin):
     
 class PriceInline(admin.TabularInline):
     model = PRICE
-    extra = 1
+    extra = 0
 @admin.register(STOCKS)
 class StocksAdmin(admin.ModelAdmin):
     inlines=[PriceInline]

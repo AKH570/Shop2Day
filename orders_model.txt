@@ -70,3 +70,15 @@ class OrderedFood(models.Model):
 
     def __str__(self):
         return self.fooditem.food_title
+
+
+
+{% for p in cart.product.price_set.all %}
+                            <div class="table-wrapper-center">
+                                <h5 class="heading">{{p.mrp|mul:cart.qty}}</h5>
+                            </div>
+                            {% endfor %}
+
+
+
+                                            

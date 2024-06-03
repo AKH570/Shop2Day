@@ -1,7 +1,7 @@
 import datetime
 
-def Order_number(pk):
+def Order_number():
     cur_time = datetime.datetime.now().strftime('%y%m%d%H%M')
-    order_number = cur_time + str(pk)
+    #order_number = cur_time
 
-    return order_number
+    return cur_time

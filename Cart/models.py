@@ -15,8 +15,10 @@ class CART(models.Model):
 
     def __str__(self):
         return str(self.product)
-    # def __str__(self):
-    #     return f'{self.qty}x{self.product}'
+
+    def subtotal(self):
+        return self.product.product_price * self.qty
+
     class Meta:
         verbose_name_plural='CARTS'
    
