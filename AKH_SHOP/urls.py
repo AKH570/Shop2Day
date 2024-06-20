@@ -9,7 +9,7 @@ urlpatterns = [
     path('accounts/',include('Accounts.urls')),
     path('',include('Home.urls')),
     path('',include('Inventory.urls')), 
-    path('',include('Store.urls')),
+    # path('',include('Store.urls')),
     path('',include('Cart.urls')),
     path('',include('Orders.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

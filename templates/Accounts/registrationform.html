@@ -5,42 +5,37 @@
 <!--------------- login-section--------------->
 <section class="login account footer-padding">
     <div class="container">
-        <div class="login-section account-section">
+        <div class="registration-section account-section">
             <div class="review-form">
                 <h5 class="comment-title">Create Account</h5>
                 <form action="{% url 'registrationform' %}" method="POST">
                     {% csrf_token %}
                     <div class=" account-inner-form">
                         <div class="review-form-name">
-                            <label for="fname" class="form-label">First Name*</label>
                             {{form.first_name}}
                         </div>
                         <div class="review-form-name">
-                            <label for="lname" class="form-label">Last Name*</label>
                             {{form.last_name}}
                         </div>
                     </div>
                     <div class=" account-inner-form">
                         <div class="review-form-name">
-                            <label for="lname" class="form-label">User Name*</label>
                             {{form.username}}
                         </div>
                         <div class="review-form-name">
-                            <label for="email" class="form-label">Email*</label>
                             {{form.email}}
                         </div>
                     </div>
-                    <!-- <div class="review-form-name address-form">
-                        <label for="address" class="form-label">Phone</label>
-                        {{form.phone_no}}
-                    </div> -->
                     <div class=" account-inner-form">
                         <div class="review-form-name">
-                            <label for="phone" class="form-label">Password</label>
+                            {{form.phone_no}}
+                        </div>
+                    </div>
+                    <div class=" account-inner-form">
+                        <div class="review-form-name">
                             {{form.password}}
                         </div>
                         <div class="review-form-name">
-                            <label for="phone" class="form-label">Confirm password</label>
                             {{form.confirm_password}}
                         </div>
                     </div> <br>
@@ -54,13 +49,13 @@
                         {% endfor %}
                     </ul>
                     <li style="color: red; font-size: medium;">{{form.non_field_errors}}</li>
-                    <div class="review-form-name checkbox">
+                    <!-- <div class="review-form-name checkbox">
                         <div class="checkbox-item">
-                            <input type="checkbox">
+                            <input type="checkbox" name="chkbox" value="Yes" required>
                             <p class="remember">
                                 I agree all terms and condition in <span class="inner-text">ShopUs.</span></p>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="login-btn text-center">
                         <input type="submit" class="shop-btn" value="Create an Account">
                     </div>
@@ -68,7 +63,7 @@
                 <div class="login-btn text-center">
                     <!-- <a href="#" class="shop-btn">Create an Account</a> -->
                     <!-- <input type="submit" class="shop-btn" value="Create an Account"> -->
-                    <span class="shop-account">Already have an account ?<a href="{% url 'login' %}">Log In</a></span>
+                    <span class="shop-account">Already have an account ?<a href="{% url 'login' %}" style="color: rgb(245, 68, 151);">Log In</a></span>
                 </div><br>
                 <div class="login-btn text-center">
                     {% include 'common/alert.html' %}

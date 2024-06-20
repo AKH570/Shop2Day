@@ -14,29 +14,26 @@
                     
                     <div class="review-inner-form ">
                         <div class="review-form-name">
-                            <label for="email" class="form-label">Email Address**</label>
-                            <input type="email" name="email" class="form-control" placeholder="Email">
+                            <!-- <label for="email" class="form-label">Email Address**</label> -->
+                            <input type="email" name="email" class="form-control" placeholder="Email" style="border-color: rgb(245, 68, 151);border-width: 2px;">
                         </div>
                         <div class="review-form-name">
-                            <label for="password" class="form-label">Password*</label>
-                            <input type="password" name="password" class="form-control" placeholder="password">
+                            <!-- <label for="password" class="form-label">Password*</label> -->
+                            <input type="password" name="password" class="form-control" placeholder="password" style="border-color: rgb(245, 68, 151);border-width: 2px;">
                         </div>
                         <div class="review-form-name checkbox">
-                            <div class="checkbox-item">
-                                <input type="checkbox">
-                                <span class="address">
-                                    Remember Me</span>
-                            </div>
                             <div class="forget-pass">
-                                <p>Forgot password?</p>
+                                <span class="shop-account"><a href="{% url 'forgetpassword' %}">Forgot password?
+                                </a></span> 
                             </div>
                         </div>
                     </div>
                     <div class="login-btn text-center">
                         <!-- <a href="#" class="shop-btn">Log In</a> -->
                         
-                        <input type="submit" class="shop-btn" value="Log In">
-                        <span class="shop-account">Dont't have an account ?<a href="{% url 'registrationform' %}">Sign Up
+                        <!-- <input type="submit" class="shop-btn" value="Log In"> -->
+                        <button type="submit" class="shop-btn" value="Log In">Login</button>
+                        <span class="shop-account">Dont't have an account ?<a href="{% url 'registrationform'  %}" style="color: rgb(245, 68, 151);">Sign Up
                             </a></span>
                     </div>
                 </div>

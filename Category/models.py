@@ -16,7 +16,7 @@ class CATEGORY(models.Model):
 
     # to get category dynamically from html template
     def get_category_url(self): 
-        return reverse('categoryOne',args=[self.slug])
+        return reverse('cat_item',args=[self.slug])
 
     def __str__(self):
         return self.title

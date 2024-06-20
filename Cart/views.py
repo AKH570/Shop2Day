@@ -12,6 +12,7 @@ from Accounts.models import User
 @login_required(login_url='login')
 def myCart(request,subtotal=0,quantity=0,myCart=None):
     myCart = CART.objects.filter(user=request.user)
+    print(f'cart are: {myCart}')
     for i in myCart:
         value = PRICE.objects.get(product=i.product)
         subtotal += (i.qty * value.mrp)

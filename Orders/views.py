@@ -32,7 +32,7 @@ def newOrders(request,total=0,delivery_charge=0,Grand_Total=0):
             order.country = form.cleaned_data['country']
             order.district = form.cleaned_data['district']
             order.billAmount = Grand_Total
-            order.paymentMethod = request.POST['payment-method']
+            order.paymentMethod =request.POST.get('payment-method', False)
             order.save()
             order_number= Order_number() + str(order.id) # here the order id will be generated then pass it to oreder_number
             order.orderNo = order_number # here pk is id

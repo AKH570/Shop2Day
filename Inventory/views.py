@@ -17,59 +17,40 @@ import json
 from Cart.context_processors import get_cart_items
 # Create your views here.
 
-# def Store(request):
-#     categorys = CATEGORY.objects.filter(slug__in=['popular-product','new-arrival'])
-#     #singlecate = allCategory.get(slug='all-item')
-#     products = PRODUCT.objects.filter(category__slug='all-item').exclude(slug='side-photo')
-#     #sidephoto = PRODUCT.objects.filter(slug='side-photo')
-#     paginator = Paginator(products,3)
-#     pageNumber = request.GET.get("page")
-#     pageProduct = paginator.get_page(pageNumber)
-#     allcount = products.count()
-#     context={      'products':pageProduct,
-#                    'productCount':allcount,
-#                    #'sidephoto':sidephoto,
-#                    'cateAll':categorys}
-    
-#     return render(request,'Store/store.html',context)
-
-#In Product Menu the first slug-Summer Stor
-"""
-def categoryOne(request,category_slug=None,subcate_slug=None):
+def catItem(request,cat_slug):
     products = None
     categories = None
-    if category_slug is not None and subcate_slug is not None:
-        categories = get_object_or_404(CATEGORY,slug = category_slug)
-        subcategoris = get_object_or_404(SUBCATEGORY,slug =subcate_slug,category=categories)
-        print(f'subcate:{subcategoris}')
-        #products= PRODUCTS.objects.filter(category=categories)
-        products= PRODUCTS.objects.filter(subcategory=subcategoris)
+    if cat_slug is not None:
+        # categories = get_object_or_404(CATEGORY,slug = cat_slug)
+        categories = CATEGORY.objects.get(slug=cat_slug)
+        print(f'subcate:{categories}')
+        products= PRODUCTS.objects.filter(category=categories)
+        #men_items = PRODUCTS.objects.filter(category__slug=men)
         productImg=IMAGE.objects.filter(product__in=products)
-        print(f'productImg:{productImg}')
-        colorattr = ATTRIBUTEVALUE.objects.filter(attribute__name='Color')
-        sizeattr = ATTRIBUTEVALUE.objects.filter(attribute__name='Size')
-        colorid = request.GET.get('color')
-        if colorid:
-             productImg=IMAGE.objects.filter(product__attributevalue=colorid,
-                                            product__category=categories)
         
-        else:
-            productImg=IMAGE.objects.filter(product__in=products)
-        #sidephoto = PRODUCT.objects.filter(slug='side-banner-1')
-        #allCategory = CATEGORY.objects.all().exclude(slug__in=['new-arrival','popular-product','all-item'])
         # paginator = Paginator(products,3)
         # pageNumber = request.GET.get("page")
         # pageProduct = paginator.get_page(pageNumber)
         productCount = products.count()
         context = { 'products':products,
                     'productImg':productImg,
-                    'colorattr':colorattr,
-                    'sizeattr':sizeattr,
+                    # 'colorattr':colorattr,
+                    # 'sizeattr':sizeattr,
                     'productCount':productCount
                      }
     else:
-        pass
+        print(f'No category found for this link')
     return render(request,'Inventory/productCate1.html',context )
+
+def menItem(request):
+    menCat = CATEGORY.objects.filter(slug='men')
+    menProducts = PRODUCTS.objects.filter(category=menCat)
+    productImg=IMAGE.objects.filter(product__in=menProducts)
+    context={
+        'products':menProducts,
+        'productImg':productImg
+    }
+    return render(request,'Inventory/productCate1.html')
 
 # def FilterByColor(request,cate_slug,color_name):
 #      products = PRODUCTS.objects.filter(category__slug=cate_slug)
@@ -78,7 +59,7 @@ def categoryOne(request,category_slug=None,subcate_slug=None):
 #      #ChooseProduct = PRODUCTS.objects.filter(category__slug=cate_slug)
 #      #return HttpRequest('hello')
 #      return render(request,'Inventory/productCate1.html')
-"""
+
 
 def productDetails(request,cate_slug,prod_slug):
         ChooseProduct = get_object_or_404(PRODUCTS,category__slug=cate_slug,slug=prod_slug)

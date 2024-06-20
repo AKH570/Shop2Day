@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-n6%n+unv8c*^y9xew4o!-e3mu=4p7o48=bdcpp2s^n&!5a124o'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG',cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -93,7 +94,7 @@ WSGI_APPLICATION = 'AKH_SHOP.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / config('DB_NAME'),
     }
 }
 
@@ -145,3 +146,24 @@ MEDIA_ROOT = BASE_DIR /'media'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# Email Configurations
+#PASSWORD AND USER SHOULD BE CHANGED ONCE ITS GO LIVE
+# THIS IFORMATION SHOULD BE STORED IN ENV FILE FOR SECURITY
+
+"""
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT',cast=int)
+EMAIL_HOST_USER = 'khandokarmtb570@gmail.com'
+EMAIL_HOST_PASSWORD = 'Mtb570@84'
+EMAIL_USE_TLS=True
+DEFAULT_FROM_EMAIL=EMAIL_HOST_USER
+"""
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'mail.abirhkhandokar.com'
+EMAIL_PORT = '465'
+EMAIL_HOST_USER = 'barakahclothstore@abirhkhandokar.com'
+EMAIL_HOST_PASSWORD = '9ZuQ*HayQGhm'
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+DEFAULT_FROM_EMAIL=EMAIL_HOST_USER

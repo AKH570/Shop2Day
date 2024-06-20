@@ -3,14 +3,14 @@
 {% block content %}
 <!--------------- products-sidebar-section--------------->
 <section class="product product-sidebar footer-padding">
-  <div class="container">
-      <div class="row g-5">
-          <div class="col-lg-3">
-              <div class="sidebar" data-aos="fade-right">
-                  <div class="sidebar-section">
-                      <div class="sidebar-wrapper">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-3">
+                <div class="sidebar" data-aos="fade-right">
+                    <div class="sidebar-section">
+                        <!-- <div class="sidebar-wrapper">
                           <h5 class="wrapper-heading">Product Categories</h5>
-                          <div class="sidebar-item">
+                            <div class="sidebar-item">
                               <ul class="sidebar-list">
                                   <li>
                                       <input type="checkbox" id="mobile" name="mobile">
@@ -58,75 +58,75 @@
                                   </li>
                               </ul>
                           </div>
-                      </div>
-                      <hr>
-                      <div class="sidebar-wrapper sidebar-range">
+                        </div> -->
+                      <!-- <hr> -->
+                        <!-- <div class="sidebar-wrapper sidebar-range">
                           <h5 class="wrapper-heading">Price Range</h5>
-                          <div class="price-slide range-slider">
-                              <div class="price">
-                                  <div class="range-slider style-1">
-                                      <div id="slider-tooltips" class="slider-range mb-3"></div>
-                                      <span class="example-val" id="slider-margin-value-min"></span>
-                                      <span>-</span>
-                                      <span class="example-val" id="slider-margin-value-max"></span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <hr>
-                      <div class="sidebar-wrapper">
+                            <div class="price-slide range-slider">
+                                <div class="price">
+                                    <div class="range-slider style-1">
+                                        <div id="slider-tooltips" class="slider-range mb-3"></div>
+                                            <span class="example-val" id="slider-margin-value-min"></span>
+                                            <span>-</span>
+                                            <span class="example-val" id="slider-margin-value-max"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                      <!-- <hr> -->
+                        <!-- <div class="sidebar-wrapper">
                           <h5 class="wrapper-heading">Brands</h5>
-                          <div class="sidebar-item">
-                              <ul class="sidebar-list">
-                                  <li>
+                            <div class="sidebar-item">
+                                <ul class="sidebar-list">
+                                    <li>
                                       <input type="checkbox" id="thread" name="thread">
                                       <label for="thread">Refined Threads
                                       </label>
-                                  </li>
-                                  <li>
+                                    </li>
+                                    <li>
                                       <input type="checkbox" id="ethereal" name="ethereal">
                                       <label for="ethereal">Ethereal Chic</label>
-                                  </li>
-                                  <li>
+                                    </li>
+                                    <li>
                                       <input type="checkbox" id="yellow" name="yellow">
                                       <label for="yellow">Yellow</label>
-                                  </li>
-                                  <li>
+                                    </li>
+                                    <li>
                                       <input type="checkbox" id="esctasy" name="esctasy">
                                       <label for="esctasy">Esctasy</label>
-                                  </li>
-                                  <li>
+                                    </li>
+                                    <li>
                                       <input type="checkbox" id="urban" name="urban">
                                       <label for="urban">Urban Hive</label>
-                                  </li>
-                                  <li>
+                                    </li>
+                                    <li>
                                       <input type="checkbox" id="velvet" name="velvet">
                                       <label for="velvet">Velvet Vista</label>
-                                  </li>
-                                  <li>
-                                      <input type="checkbox" id="boldly" name="boldly">
-                                      <label for="boldly">Boldly Blue</label>
-                                  </li>
-                                  <li>
-                                      <input type="checkbox" id="minted" name="minted">
-                                      <label for="minted">Minted Mode</label>
-                                  </li>
-                                  <li>
-                                      <input type="checkbox" id="ensemble" name="ensemble">
-                                      <label for="ensemble">Eclectic Ensemble</label>
-                                  </li>
-                                  <li>
-                                      <input type="checkbox" id="attire" name="attire">
-                                      <label for="attire">BraveAlchemy Attire</label>
-                                  </li>
-                                  <li>
-                                      <input type="checkbox" id="couture" name="couture">
-                                      <label for="couture">Cascade Couture</label>
-                                  </li>
-                              </ul>
-                          </div>
-                      </div>
-                      <hr>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="boldly" name="boldly">
+                                        <label for="boldly">Boldly Blue</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="minted" name="minted">
+                                        <label for="minted">Minted Mode</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="ensemble" name="ensemble">
+                                        <label for="ensemble">Eclectic Ensemble</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="attire" name="attire">
+                                        <label for="attire">BraveAlchemy Attire</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="couture" name="couture">
+                                        <label for="couture">Cascade Couture</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> -->
+                      <!-- <hr> -->
                       <div class="sidebar-wrapper">
                           <h5 class="wrapper-heading">Color</h5>
                           <div class="sidebar-item">
@@ -152,20 +152,24 @@
                           <h5 class="wrapper-heading">Size</h5>
                           <div class="sidebar-item">
                               <ul class="sidebar-list">
-                                {% for size in sizeattr %}
                                   <li>                                      
                                     <input type="checkbox" id="small" name="small">
-                                    <label for="small">{{size.values}}</label>
+                                    <label for="small">Xl</label>
                                   </li>
-                                  {% endfor %}
                               </ul>
+                              <ul class="sidebar-list">
+                                <li>                                      
+                                  <input type="checkbox" id="small" name="small">
+                                  <label for="small">L</label>
+                                </li>
+                            </ul>
                           </div>
                       </div>
                   </div>
                   <div class="sidebar-shop-section">
-                      <span class="wrapper-subtitle">TRENDY</span>
-                      <h5 class="wrapper-heading">Best wireless Shoes</h5>
-                      <a href="seller-sidebar.html" class="shop-btn deal-btn">Shop Now </a>
+                      <span class="wrapper-subtitle" style="color: coral;">TRENDY</span>
+                      <h5 class="wrapper-heading fs-3" style="color: crimson;">Best Shop for your kids</h5>
+                      <a href="{% url 'index' %}" class="shop-btn deal-btn">Shop Now </a>
                   </div>
               </div>
           </div>
@@ -173,9 +177,9 @@
               <div class="product-sidebar-section" data-aos="fade-up">
                   <div class="row g-5">
                       <div class="col-lg-12">
-                          <div class="product-sorting-section">
+                          <div class="product-sorting-section" style="background-color:beige;">
                               <div class="result">
-                                  <p>Showing <span>1–16 of 66 results</span></p>
+                                  <p style="color:black">Showing <span>1–{{productCount}} of {{productCount}} results</span></p>
                               </div>
                               <div class="product-sorting">
                                   <span class="product-sort">Sort by:</span>
@@ -297,10 +301,8 @@
                                           {% endfor %}
                                       </div>
                                       <div class="price">
-                                        {% for price in img.product.price_set.all %}
                                           <!-- <span class="price-cut">$31.99</span> -->
-                                          <span class="new-price">{{price.BDT}}</span>
-                                          {% endfor %}
+                                          <span class="new-price">{{img.product.product_price}}</span>
                                       </div>
                                   </div>
                               </div>

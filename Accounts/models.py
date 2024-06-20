@@ -49,6 +49,7 @@ class User(AbstractBaseUser):
     email   = models.EmailField(max_length=100,unique=True)
     phone_no = models.CharField(max_length=13,null=True,blank=True)
     role    = models.PositiveSmallIntegerField(choices=ROLE_CHOICE,blank=True,null=True)
+    checkbox = models.BooleanField(default=False)
 
     date_created = models.DateTimeField(auto_now_add=True)
     date_login = models.DateTimeField(auto_now_add=True)

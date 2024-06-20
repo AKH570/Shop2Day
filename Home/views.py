@@ -25,22 +25,24 @@ def home(request):
     stocks = STOCKS.objects.filter(product__in=newProd)
 
     context = {
-        'NewProdImage':newProdImage,
+        'products':newProdImage,
         'flashProdImg':flashProdImage,
         'stocks':stocks,
     }
     return render(request,'Home/index.html',context)
 
+# def mensItem(request):
+#     mensproducts = PRODUCTS.objects.filter(category=CATEGORY.objects.get(slug='men'))
+#     print(f'mens:{mensproducts}')
+
 def search(request):
     if 'keyword' in request.GET:
           keyword   = request.GET['keyword']
           if keyword:
-               products=PRODUCTS.objects.order_by('-create_date').filter(name__icontains=keyword)
-               print(f'name:{products}')
-               products_Img=IMAGE.objects.filter(product__name__icontains=keyword)
-               print(f'Img:{products_Img}')
+               products=PRODUCTS.objects.order_by('-create_date').filter(Q(name__icontains=keyword)|Q(description__icontains=keyword)|Q(slug__icontains=keyword))
+               products_Img=IMAGE.objects.filter(product__in=products)
     context={
-         'NewProdImage':products_Img,
+         'products':products_Img,
     }
 
     return render(request,'Home/index.html',context)

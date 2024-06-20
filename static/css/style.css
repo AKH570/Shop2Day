@@ -78,7 +78,8 @@ a {
 }
 a .list-text {
   color: #FFFFFF;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
+  /* font-family:Arial, Helvetica, sans-serif; */
 }
 a span {
   font-size: 14px;
@@ -134,16 +135,16 @@ button {
 }
 
 .shop-btn {
-  padding: 1.2rem 0;
-  margin: 4rem 2rem;
+  padding: 1.3rem 0;
+  margin: 4rem 3rem;
   text-align: center;
-  border-radius: 3rem;
+  border-radius: 2rem;
   display: inline-block;
-  background: #AE1C9A;
+  background: #f22283;
   font-size: 1.4rem;
   font-weight: 500;
   position: relative;
-  color: #FFFFFF;
+  /* color: #FFFFFF; */
   font-family: "Inter", sans-serif;
   transition: all 0.3s;
   overflow: hidden;
@@ -764,17 +765,18 @@ button {
 }
 
 .header-bottom {
-  background:#8375db;
-  padding: 10px 0;
+  background:#ee159a;
+  padding: 15px 0;
 }
 
 .header-nav {
-  display: flex;
+  display:flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  align-items:flex-start;
+  justify-content:space-between;
   gap: 0px;
   position: relative;
+  margin-right: 100px;
 }
 .header-nav .category-menu-section {
   cursor: pointer;
@@ -897,18 +899,21 @@ button {
   max-height: var(--max-height);
 }
 .header-nav .list-text {
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   color: #FFFFFF;
 }
 .header-nav .shop-text {
   color: #232532;
 }
+.header-nav .header-nav-menu{
+  margin-left:40px;
+  gap: 3rem;
+ 
+}
 .header-nav .header-nav-menu .menu-list {
   display: flex;
   flex-direction: row;
-  align-items:center;
-  justify-content:center;
-  gap: 4rem;
+  gap: 3rem;
 }
 .header-nav .header-nav-menu .menu-list li {
   position: relative;
@@ -1011,49 +1016,53 @@ button {
 }
 
 /* Custom Search box */
-.header-nav .header-nav-menu .search-box {
+/* .header-nav .search-box {
   display: flex;
-  align-items:center;
-  justify-content: center;
-  
+  align-items:flex-end;
+  justify-items:flex-end;
+} */
+.header-nav .search-box{
+    display: flex;  
+    z-index: 3;
+    height: 50px;
+    width: 550px;
+    background:#f2a7d7;
+    border: 3px solid #f03580;
+    box-shadow: none;
+    border-radius: 5px;
+    width: calc(632px+6px);
+    font-family: inherit;
+    margin-right: 10px;
 }
-.header-nav .header-nav-menu .search-box .search-bar{
-  display: flex;
-  align-items: center;
-  border-radius: 25px;
-  width: 100%;
-  max-width:1000px;
-  padding: 10px 13px;
-  background-color:#FFFFFF;
-  margin: auto 0; 
-  height: 45px;
-  backdrop-filter: blur(4px) saturate(180%);
-}
-.header-nav .header-nav-menu .search-box .search-bar input{
+
+.header-nav .search-box .search-bar .input{
   border:0;
   outline:none;
+  background:#f2a7d7;
   font-size: 18px;
-  width:450px;
+  width:350px;
   flex: 1;
 }
 
-::placeholder{
-  color:#a9a2d9;
-  text-align:left;
+.header-nav .search-bar .input::placeholder{
+  color:#141314;
+  text-align:center;
 }
-.header-nav .header-nav-menu .search-box .search-bar button{
-  border: 0;
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  background:#FBD7E9;
+.header-nav .search-box .search-bar button{
+  display: flex;
+  z-index: 4;
+  border-radius: 55%;
+  background-color: #ed3c88;
+  width: 33px;
+  height: 33px;
+  margin:0px 5px 0px;
   cursor: pointer;
 }
-.header-nav .header-nav-menu .search-box .search-bar button img{
-  width: 20px;
-  justify-content: center;
-}
-.header-nav .header-nav-menu .search-box .search-bar button span{
+/* .header-nav .search-bar button img{
+  display: flex;
+  margin-right: 5px;
+} */
+/* .header-nav .header-nav-menu .search-box .search-bar button span{
   color:#fff ;
   font-size: 24px;
   background:none;
@@ -1063,8 +1072,8 @@ button {
   position: relative;
   cursor: pointer;
   z-index:4;
-}
-.header-nav .header-nav-menu .search-box span:hover{
+} */
+/* .header-nav .header-nav-menu .search-box span:hover{
   color:#c49410;
 }
 .header-nav .header-nav-menu .search-box span::after{
@@ -1080,7 +1089,7 @@ button {
 }
 .header-nav .header-nav-menu .search-box span:hover::after{
 width: 100%;
-}
+} */
 
 
 
@@ -1805,7 +1814,7 @@ width: 100%;
 }
 
 .footer-service-section {
-  background-color: #AE1C9A;
+  background-color: #f53c86;
   padding: 2.8rem;
   margin-top: -11rem;
   border-radius: 4px;
@@ -2339,7 +2348,7 @@ hr {
 }
 
 .sidebar-shop-section {
-  background: url("../assets/images/homepage-one/sidebar-img.png");
+  background: url("../assets/images/homepage-one/category_sidebar-kids.jpeg");
   padding: 3rem;
   margin-top: 3rem;
   height: 29.5rem;
@@ -2643,9 +2652,11 @@ hr {
 .review-form .review-inner-form .review-form-name {
   margin-bottom: 2rem;
   width: 100%;
+  /* border-width: 10px;
+  background-color: #AE1C9A; */
 }
-.review-form input {
-  height: 5rem;
+.review-form .login-btn button {
+  height: 5rem;;
 }
 .review-form input,
 .review-form textarea,
@@ -2816,7 +2827,7 @@ hr {
 .cart-section .table-row .table-wrapper .wrapper-img {
   width: 8rem;
   height: 8rem;
-  border: 1px solid rgba(174, 28, 154, 0.08);
+  border: 2px solid rgba(174, 28, 154, 0.08);
   border-radius: 0.5rem;
   background: #FFFFFF;
 }
@@ -2862,7 +2873,7 @@ table .ticket-row:hover {
 }
 
 .table-row {
-  background: rgba(174, 28, 154, 0.08);
+  background:#f45f9b;
   border: 1px solid #e9e7e7;
 }
 .table-row .table-wrapper {
@@ -2892,11 +2903,12 @@ table .ticket-row:hover {
   font-weight: 600;
 }
 .table-row .table-wrapper .heading:hover {
-  color: #AE1C9A;
+  color: #f12692;
 }
 .table-row .table-wrapper .table-heading {
   font-size: 1.5rem;
   font-weight: 500;
+  color:#F8F8F8
 }
 .table-row .table-wrapper p {
   font-weight: 500;
@@ -3154,13 +3166,65 @@ table .ticket-row:hover {
   justify-content: center;
   gap: 0px;
 }
-.login-section .review-form {
-  width: 51.2rem;
-  height: 63rem;
+/* start custom reset */
+.reset-section{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0px;
+}
+.registration-section{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0px;
+}
+.reset-section .review-form{
+  width: 51rem;
+  height: 40rem;
   background-color: #FFFFFF;
   padding: 4rem;
+  border-radius: 0.7rem;
+}
+.reset-section .review-form .comment-title {
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.reset-section .review-form .shop-btn {
+  width: 100%;
+  margin: 0 0 2rem 0;
+}
+.reset-section .review-form .shop-btn::after {
+  display: none;
+}
+.reset-section .review-form .shop-account {
+  color: #797979;
+  font-size: 1.3rem;
+}
+.reset-section .review-form .shop-account a {
+  font-size: 1.3rem;
+  margin-left: 0.5rem;
+  font-weight: 400;
+}
+@media (max-width:767px) {
+  .reset-section .review-form {
+    padding: 2rem;
+    height: auto;
+  }
+}
+/* end custom reset */
+/* start login */
+.login-section .review-form {
+  width: 51.2rem;
+  height: 40rem;
+  background-color: #FFFFFF;
+  padding: 2rem;
   border-radius: 0.5rem;
 }
+
 .login-section .review-form .comment-title {
   text-align: center;
   margin-top: 5rem;
@@ -3191,7 +3255,49 @@ table .ticket-row:hover {
     height: auto;
   }
 }
+/* start login */
+/* start registration form custom */
+.registration-section .review-form {
+  width: 51.2rem;
+  height:40rem;
+  background-color: #FFFFFF;
+  padding: 4rem;
+  border-radius: 0.5rem;
+}
 
+.registration-section .review-form .comment-title {
+  text-align: center;
+  margin-top: 5rem;
+}
+.registration-section .review-form .review-inner-form {
+  display: block;
+  width: 100%;
+}
+.registration-section .review-form .shop-btn {
+  width: 100%;
+  margin: 0 0 2rem 0;
+}
+.registration-section .review-form .shop-btn::after {
+  display: none;
+}
+.registration-section .review-form .shop-account {
+  color: #797979;
+  font-size: 1.3rem;
+}
+.registration-section .review-form .shop-account a {
+  font-size: 1.3rem;
+  margin-left: 0.5rem;
+  font-weight: 400;
+}
+@media (max-width:767px) {
+  .registration-section .review-form {
+    padding: 2rem;
+    height: auto;
+  }
+}
+
+
+/* end registration custom */
 .checkbox {
   display: flex;
   flex-direction: row;
@@ -3223,7 +3329,7 @@ table .ticket-row:hover {
 
 .account-section .review-form {
   width: 57.2rem;
-  height: 79.1rem;
+  height: 60.1rem;
 }
 .account-section .account-inner-form {
   display: flex;
