@@ -1466,7 +1466,7 @@ width: 100%;
     gap: 2rem;
   }
 }
-@media only screen and (min-width: 767px) and (max-width: 1200px) {
+@media only screen and (max-width:480px) {
   .category-section {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1742,7 +1742,7 @@ width: 100%;
     gap: 3rem;
   }
 }
-@media only screen and (min-width: 767px) and (max-width: 1200px) {
+@media only screen and (max-width: 480px) {
   .best-selling-items {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -1843,7 +1843,7 @@ width: 100%;
     justify-content: flex-start;
   }
 }
-@media only screen and (min-width: 767px) and (max-width: 1200px) {
+@media only screen and (max-width: 480px) {
   .footer-service-section .service-wrapper {
     align-items: flex-start;
   }
@@ -2358,7 +2358,7 @@ hr {
   font-size: 1.3rem;
   font-weight: 500;
 }
-@media only screen and (min-width: 767px) and (max-width: 1200px) {
+@media only screen and (max-width: 480px) {
   .sidebar-shop-section {
     display: none;
   }
@@ -3927,7 +3927,7 @@ table .ticket-row:hover {
     gap: 3rem;
   }
 }
-@media only screen and (min-width: 767px) and (max-width: 1200px) {
+@media only screen and (max-width: 480px) {
   .about-service .about-service-section {
     display: flex;
     flex-direction: row;
@@ -4303,7 +4303,7 @@ table .ticket-row:hover {
     padding: 1rem;
   }
 }
-@media only screen and (min-width: 767px) and (max-width: 1200px) {
+@media only screen and (max-width: 480px) {
   .user-profile-section .dashboard-heading .dashboard-switch .switch-icon::before {
     width: 2.3rem;
     height: 2.3rem;
