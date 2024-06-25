@@ -76,7 +76,7 @@ def Orderconfirm(request,orderno):
             stocks.quantity -= item.qty
             stocks.save()
         # clear the cart
-        # CART.objects.filter(user=request.user).delete()
+        CART.objects.filter(user=request.user).delete()
         # send order no and details in html page:
         ordereditem = OrderedItem.objects.filter(order=neworder)
         subtotal = 0

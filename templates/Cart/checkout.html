@@ -142,15 +142,15 @@
                                 <!-- select payment method -->
                                 <div class="subtotal payment-type">
                                     <div class="checkbox-item">
-                                        <label>
+                                        <!-- <label>
                                             <input type="radio" name="payment-method" value="bkash">
                                             <img src="{% static 'assets/images/payment/bkash.png' %}" alt="bKash" width="100">
-                                        </label>
-                                        &emsp;
-                                        <label>
+                                        </label> -->
+                                        <!-- &emsp; -->
+                                        <!-- <label>
                                             <input type="radio" name="payment-method" value="Nagad">
                                             <img src="{% static 'assets/images/payment/nagad.png' %}" alt="bkash" width="100">
-                                        </label>
+                                        </label> -->
                                         &emsp; <!--to make space between two payment method-->
                                         <label>
                                             <input type="radio" name="payment-method" value="Cash-on-Delivery">
@@ -159,7 +159,7 @@
                                     </div>
                                 </div>
                                 <span class="text-danger" style="font-size:medium" id="paymethod-error"></span>
-                                <button class="shop-btn" onclick="paymentmethodChecked()" type="submit">Place Order Now</button>
+                                <button class="shop-btn" onclick="return paymentmethodChecked()" type="submit">Place Order Now</button>
                                 <a href="{% url 'index' %}" class="shop-btn" style="margin-top: 5px;">Back To Shopping</a>
                             </div>
                         </div>
@@ -175,9 +175,10 @@
 <script>
     function paymentmethodChecked(){
         var paymethod = $("input[name='payment-method']:checked").val()
+        
         if(!paymethod){
-            $('#paymethod-error').html("Please select one payment method")
-            return false;
+            $('#paymethod-error').html("For this time You should select only Cash-on-delivery method")
+            return false; //false means if this error found the it should go further
         }else{
             var payconf = confirm('Your payment method is ' +paymethod+ ' Please submit "Ok" to continue')
             if(payconf == true){
