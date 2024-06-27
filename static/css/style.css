@@ -1027,8 +1027,8 @@ button {
     z-index: 3;
     height: 40px;
     width: 550px;
-    background:#D3D3D3;
-    /* border:1px solid; */
+    background:snow;
+    border:1px solid lightblue;
     box-shadow: none;
     border-radius: 10px;
     width: calc(632px+6px);
@@ -1039,7 +1039,7 @@ button {
 .header-nav .search-box .search-bar .input{
   border:0;
   outline:none;
-  background:#D3D3D3;
+  background:snow;
   font-size: 18px;
   width:350px;
   flex: 1;
