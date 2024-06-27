@@ -21,11 +21,8 @@ def catItem(request,cat_slug):
     products = None
     categories = None
     if cat_slug is not None:
-        # categories = get_object_or_404(CATEGORY,slug = cat_slug)
         categories = CATEGORY.objects.get(slug=cat_slug)
-        print(f'subcate:{categories}')
         products= PRODUCTS.objects.filter(category=categories)
-        #men_items = PRODUCTS.objects.filter(category__slug=men)
         productImg=IMAGE.objects.filter(product__in=products)
         
         # paginator = Paginator(products,3)
@@ -34,8 +31,6 @@ def catItem(request,cat_slug):
         productCount = products.count()
         context = { 'products':products,
                     'productImg':productImg,
-                    # 'colorattr':colorattr,
-                    # 'sizeattr':sizeattr,
                     'productCount':productCount
                      }
     else:

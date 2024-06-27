@@ -140,7 +140,7 @@ button {
   text-align: center;
   border-radius: 2rem;
   display: inline-block;
-  background: #f22283;
+  background:#D3D3D3;
   font-size: 1.4rem;
   font-weight: 500;
   position: relative;
@@ -192,7 +192,7 @@ button {
 
 .product {
   padding: 6rem 0;
-}
+ }
 @media (max-width:1023px) {
   .product {
     padding: 3rem 0;
@@ -481,7 +481,8 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 0px;
-  padding: 1.5rem 0 1.5rem 0;
+  padding:.5rem .5rem .3rem .5rem;
+  /* background-color:aliceblue; */
 }
 .header-center .header-cart-items {
   display: flex;
@@ -765,7 +766,7 @@ button {
 }
 
 .header-bottom {
-  background:#ee159a;
+  background:snow;
   padding: 15px 0;
 }
 
@@ -900,14 +901,14 @@ button {
 }
 .header-nav .list-text {
   font-size: 1.8rem;
-  color: #FFFFFF;
+  color: #151111;
 }
 .header-nav .shop-text {
   color: #232532;
 }
 .header-nav .header-nav-menu{
   margin-left:40px;
-  gap: 3rem;
+  gap: 2.5rem;
  
 }
 .header-nav .header-nav-menu .menu-list {
@@ -1024,12 +1025,12 @@ button {
 .header-nav .search-box{
     display: flex;  
     z-index: 3;
-    height: 50px;
+    height: 40px;
     width: 550px;
-    background:#f2a7d7;
-    border: 3px solid #f03580;
+    background:#D3D3D3;
+    /* border:1px solid; */
     box-shadow: none;
-    border-radius: 5px;
+    border-radius: 10px;
     width: calc(632px+6px);
     font-family: inherit;
     margin-right: 10px;
@@ -1038,7 +1039,7 @@ button {
 .header-nav .search-box .search-bar .input{
   border:0;
   outline:none;
-  background:#f2a7d7;
+  background:#D3D3D3;
   font-size: 18px;
   width:350px;
   flex: 1;
@@ -1052,7 +1053,7 @@ button {
   display: flex;
   z-index: 4;
   border-radius: 55%;
-  background-color: #ed3c88;
+  background-color:#FFBB38;
   width: 33px;
   height: 33px;
   margin:0px 5px 0px;
@@ -1251,9 +1252,9 @@ width: 100%;
   text-align: center;
   border-radius: 3rem;
   display: inline-block;
-  background: #AE1C9A;
+  background: #e12690;
   font-size: 1.6rem;
-  font-weight: 500;
+  /* font-weight: 300; */
   position: relative;
   color: #FFFFFF;
   font-family: "Inter", sans-serif;
@@ -1814,7 +1815,7 @@ width: 100%;
 }
 
 .footer-service-section {
-  background-color: #f53c86;
+  background-color:grey;
   padding: 2.8rem;
   margin-top: -11rem;
   border-radius: 4px;
@@ -1828,7 +1829,7 @@ width: 100%;
 }
 .footer-service-section .service-wrapper .service-info {
   font-size: 1.6rem;
-  color: #FFFFFF;
+  color: #210404;
   margin-bottom: 0;
 }
 .footer-service-section .service-wrapper .service-details {
@@ -2873,7 +2874,7 @@ table .ticket-row:hover {
 }
 
 .table-row {
-  background:#f45f9b;
+  background:none;
   border: 1px solid #e9e7e7;
 }
 .table-row .table-wrapper {
@@ -2908,7 +2909,7 @@ table .ticket-row:hover {
 .table-row .table-wrapper .table-heading {
   font-size: 1.5rem;
   font-weight: 500;
-  color:#F8F8F8
+  color:#0f0808
 }
 .table-row .table-wrapper p {
   font-weight: 500;
@@ -3816,7 +3817,7 @@ table .ticket-row:hover {
 }
 
 .blog {
-  background: #d1cde7;
+  background:#D3D3D3;
   padding: 2.5rem 0;
 }
 .blog .heading {
@@ -3826,7 +3827,7 @@ table .ticket-row:hover {
 
 .blog-bradcrum a {
   font-size: 1.6rem;
-  color: #2b42da;
+  color: #08090f;
   font-weight: 300;
   font-family: "Inter", sans-serif;
 }
